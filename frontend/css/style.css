@@ -1,0 +1,35 @@
+nav {
+    background-color: blue;
+}
+
+.music-player {
+    background-color: blueviolet;
+}
+
+.main-content {
+    background-color: aqua;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.albums-disp img {
+    object-fit: cover;
+    object-position: center center;
+    width: 50px;
+    height: 50px;
+}
+
+.music-player img {
+    object-fit: cover;
+    object-position: center center;
+    width: 50px;
+    height: 50px;
+}
+
+.artists-disp img {
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
