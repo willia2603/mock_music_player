@@ -12,53 +12,56 @@
 </head>
 
 <body>
-    <script src="" async defer></script>
+    <!-- <script src="" async defer></script> -->
     <header>
-        <h1>Menu</h1>
+        <h1>Spotify (almost)</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="./albums.html">Albums</a></li>
-            <li><a href="./artists.html">Artists</a></li>
-            <li><a href="./tracks.html">Tracks</a></li>
-        </ul>
-        <form>
-            <input type="search" name="q" placeholder="Search artist, album or track">
-            <input type="submit" value="Go!">
-        </form>
-    </nav>
-    <section class="main-content">
-        <section class="albums-disp">
-            <h2>Top 5 Albums</h2>
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-            <img src="../img_place_holders/1.jpeg" alt="album cover">
-        </section>
+    <div class="page-layout">
+        <nav>
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="./homepage.html">Homepage</a></li>
+                <li><a href="./albums.html">Albums</a></li>
+                <li><a href="./artists.html">Artists</a></li>
+                <li><a href="./tracks.html">Tracks</a></li>
+            </ul>
+            <form>
+                <input type="search" name="q" placeholder="Search artist, album or track">
+                <input type="submit" value="Go!">
+            </form>
+        </nav>
+        <main>
+            <section class="albums-disp">
+                <h2>Top 5 Albums</h2>
+                <div class="artist-album-content">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                </div>
+            </section>
 
-    </section>
-    <section class="music-player">
+        </main>
+    </div>
+    <footer class="music-player">
         <button>Previous</button>
         <button>Play</button>
         <button>Next</button>
-        <!-- <div class="player-disp??"> -->
         <img src="../img_place_holders/1.jpeg" alt="album cover">
         <span>Song name</span>
         <span>Album/Artist</span>
         <input type="range" min="1" max="100" value="50">
-        <!-- </div> -->
-    </section>
-    <main>
-
-    </main>
+        <span>Volume</span>
+        <input type="range" min="1" max="100" value="50">
+    </footer>
 </body>
 
 </html>
