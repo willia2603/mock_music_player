@@ -9,7 +9,7 @@
     <!-- what shows up on search engine -->
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -21,11 +21,11 @@
         <nav>
             <h2>Menu</h2>
             <ul>
-                <li><a href="./homepage.html">Homepage</a></li>
-                <li><a href="./albums.html">Albums</a></li>
-                <li><a href="./artists.html">Artists</a></li>
-                <li><a href="./tracks.html">Tracks</a></li>
-                <li><a href="./search.html">Search</a></li>
+                <li><a href="{{url_for('home_page.homepage')}}">Homepage</a></li>
+                <li><a href="{{url_for('album_page.albums')}}">Albums</a></li>
+                <li><a href="{{url_for('artist_page.artists')}}">Artists</a></li>
+                <li><a href="{{url_for('tracks_page.tracks')}}">Tracks</a></li>
+                <li><a href="{{url_for('search_page.search')}}">Search</a></li>
             </ul>
             <form>
                 <input type="search" name="q" placeholder="Search ...">
@@ -36,18 +36,18 @@
             <section class="albums-disp">
                 <h2>Albums</h2>
                 <div class="artist-album-content">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
-                    <img src="../img_place_holders/1.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
+                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
                 </div>
             </section>
 
@@ -59,7 +59,7 @@
             <button>Play</button>
             <button>Next</button>
         </div>
-        <img src="../img_place_holders/1.jpeg" alt="album cover">
+        <img src="static/images/album_placeholder.jpeg" alt="album cover">
         <div>
             <div>
                 <span>Song name</span>
@@ -74,6 +74,7 @@
             <input type="range" min="1" max="100" value="50">
         </div>
     </footer>
+</body>
 </body>
 
 </html>
