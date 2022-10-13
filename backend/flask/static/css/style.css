@@ -55,7 +55,8 @@ a:link {
     font-weight: bold;
 }
 
-a:visited {
+a:visited,
+a {
     color: black;
 }
 
