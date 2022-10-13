@@ -3,3 +3,9 @@ Task 1:
 1. why venv? Why requirements.txt is needed? -> we use venv to create a virtual environment in which we can install all our packages, to ensure that the libraries are consistent and easily allow third parties to properly run our app
 -> requirements.txt is needed to know which libraries have been installed, so that they can be installed again and ensure the app is run with consistent library versions.
 2. why __init__.py? What is it used for? Why is here necessary? -> to make python recognize the folder as a module. According to the internet, it's not needed with python 3.3+ (https://docs.python.org/3/reference/import.html#regular-packages)
+
+Task 2: -
+
+Task 3:
+1. if you had many, many pages for your website, having a single “/routes/frontend/frontend.py” file would not be suitable. Why? What would be a better solution in case you had tens or even hundreds of different HTML pages?
+-> because it would be cumbersome and harder to read the code and modify it. Instead one could create a .py file for each 'similar' group of pages, so that the files are smaller finding stuff and thus changing stuff in the future is easier since everything is more compartmentalized/modularised. This way each group of routes can also be handled separately. 
