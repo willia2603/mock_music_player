@@ -1,11 +1,42 @@
 PROJECT 2
 Task 1:
-1. why venv? Why requirements.txt is needed? -> we use venv to create a virtual environment in which we can install all our packages, to ensure that the libraries are consistent and easily allow third parties to properly run our app
+1. why venv? Why requirements.txt is needed? 
+-> we use venv to create a virtual environment in which we can install all our packages, to ensure that the libraries are consistent and easily allow third parties to properly run our app
 -> requirements.txt is needed to know which libraries have been installed, so that they can be installed again and ensure the app is run with consistent library versions.
-2. why __init__.py? What is it used for? Why is here necessary? -> to make python recognize the folder as a module. According to the internet, it's not needed with python 3.3+ (https://docs.python.org/3/reference/import.html#regular-packages)
 
-Task 2: -
+2. why __init__.py? What is it used for? Why is here necessary? 
+-> to make python recognize the folder as a module. According to the internet, it's not needed with python 3.3+ (https://docs.python.org/3/reference/import.html#regular-packages)
+
+Task 2: (no questions were present)
 
 Task 3:
 1. if you had many, many pages for your website, having a single “/routes/frontend/frontend.py” file would not be suitable. Why? What would be a better solution in case you had tens or even hundreds of different HTML pages?
 -> because it would be cumbersome and harder to read the code and modify it. Instead one could create a .py file for each 'similar' group of pages, so that the files are smaller finding stuff and thus changing stuff in the future is easier since everything is more compartmentalized/modularised. This way each group of routes can also be handled separately. 
+
+PROJECT 3
+1. what are the two main categories of DBs? When is used what? What are the PROs and the CONs? 
+-> It depends on the point of view. We can have:
+- analytical and operational DBs: the former handles data that is static (data is not modified often). For example data used for statistics. The latter handles dynamic data (data that is changed frequently). For example a hospital.
+- schema and schema-less: with the former one needs to create a schema and declare how the data and the column will look like (ex. types of the columns). The latter the types are inferred automatically (no need to define them before)
+- relation and not relational: the former uses structured tables known as relations to store data, where relations can undergo relationships (ex. mySQL, SQLite..). The latter differ in other types of DBs. For example Document Db such as mondo DB, where the data is stored in documents (similar to json objects)
+->The pros of relational Dbs is that ACID proprieties (atomicity, consistency, identity and durability) are uphold. This allows for 'fault-proof' DBs and gives more reliability. non-relational Dbs on the other hand can be less 'safe' from this point of view.
+The cons of relational Dbs is that one needs to know what kind of data they want to accommodate beforehand, else making changes to the structure is complicated. With non-relational DBs on the other hand one can start creating the db right away without having to think much about what kind of data it will store.
+
+2. when interacting with a DB, there are three ways you can do that:
+    - Raw: you write the SQL queries yourself
+    - Query builder
+    - ORM
+    What are the advantages and disadvantages that you see among these methods? What would you use in a simple application? And what if performance is the most important thing? What is SQLAlchemy (yes, this is a tricky question)?
+-> The advantage with raw SQL queries is that the programmer is aware of what is going on (little to no abstraction in undergoing process) and is straight forward. The disadvantage is that it can be tedious and based on how well the SQL query is written, access speed can be compromised (i.e slowed down). 
+Furthermore: typos are more common, and it is less secure, especially when running queries that make use of user input (SQL injection: https://www.w3schools.com/sql/sql_injection.asp).
+-> The advantage of using a query builder (library that allows to build queries using objects, ex: Query.from_(books).select("*").where(books.author_id == author_id)) is that typos can be less and the code can feel more 'native' to the programmers.
+Th disadvantage is that it still doesn't protect from SQL injection and other issues like the previous approach
+-> The advantage of Object Relational Mappers (software that creates an object for each database table. lays between DB and application program, ex sqlAlchemy) allow to change the DB easily for example when migrating from one type of db to another (ex. alembic -> creates schema migrating files automatically -> fatser/easier migration )
+TBD 
+Task1:
+1. How do you see the one-to-many relationship represented? What about the many-to-many?
+-> one-to-many relationship is represented by storing a foreign key in the 'one' side
+-> many-to-many is represented by an association table
+
+2. What is varchar? It was used a lot in the past. Do you see anything better (or worse) than text?
+-> varchar is a 'type' that allows a user to store strings variable lengths. TBF
