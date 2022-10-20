@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 import datetime
 
 # Metadata: contains schemas, need to create (empty) tables before inserting rows
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 
 
 def populate_db(session):
