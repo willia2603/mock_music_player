@@ -1,17 +1,21 @@
-from database import Base, engine
-from models.artist import Artist
 from models.album import Album
+from models.artist import Artist
 from models.track import Track
-
-from sqlalchemy.orm import Session
+from models.association_tables import album_artist_association, track_artist_association
+from database import engine
 import datetime
+from sqlalchemy.orm import Session
 
-# Metadata: contains schemas, need to create (empty) tables before inserting rows
-# Base.metadata.create_all(engine)
+
+def delete_all(session):
+    session.query(Album).delete()
+    session.query(Artist).delete()
+    session.query(Track).delete()
+    session.query(album_artist_association).delete()
+    session.query(track_artist_association).delete()
 
 
 def populate_db(session):
-    # AJR tracks
     track1 = Track(
         name=f"OK Overture",
         duration=f"22",
@@ -69,7 +73,6 @@ def populate_db(session):
 
 
     )
-
     # Muse album
     album3 = Album(
         name=f"Will Of The People",
@@ -77,6 +80,7 @@ def populate_db(session):
         popularity=1,
         tracks=[track3, track4]
     )
+
     # AJR
     artist1 = Artist(
         name=f"AJR",
@@ -86,6 +90,7 @@ def populate_db(session):
         albums=[album1, album2],
         tracks=[track1, track2, track5, track6]
     )
+
     # Muse
     artist2 = Artist(
         name=f"Muse",
@@ -96,12 +101,41 @@ def populate_db(session):
         tracks=[track3, track4, track5, track6]
     )
 
+    album4 = Album(
+        name=f"Origin Of Symmetry",
+        year=int(f"2016"),
+        popularity=1,
+        artists=[artist2]
+    )
+
+    track7 = Track(
+        name=f"AJR-Muse2",
+        duration=f"56",
+        file=f"./BAH3",
+        popularity=1,
+        artists=[artist1, artist2]
+    )
+
+    album5 = Album(
+        name=f"AJR-MUSE-ALBUM",
+        year=int(f"2016"),
+        popularity=1,
+        artists=[artist1, artist2]
+    )
+
+    album6 = Album(
+        name=f"AJR-MUSE-ALBUM-NOARTIST-TRACKWITHARTIST",
+        year=int(f"2016"),
+        popularity=1,
+        tracks=[track7]
+    )
     session.add_all(
         [artist1, artist2,
-         album1, album2, album3,
+         album1, album2, album3, album4, album5, album6,
          track1, track2, track3, track4, track5, track6])
-    session.commit()
 
 
 with Session(engine) as session:
+    delete_all(session)
     populate_db(session)
+    session.commit()
