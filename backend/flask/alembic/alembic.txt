@@ -1,0 +1,4 @@
+Alembic is used for database migrations. Database migration is the process of migrating data from one or more source databases to one or more target databases by using a database migration service.
+When a migration is finished, the dataset in the source databases resides fully (and possibly restructured) in the target databases.
+
+For example, if I have a db and change the schema of my db (ex. add a column, change type of cols etc..), alembic will take care of modifying the db (add column and change types) and modify the data so that it can be inserted in the new table

@@ -6,6 +6,10 @@ from database import engine
 import datetime
 from sqlalchemy.orm import Session
 
+'''
+This file's purpose is to create a set of model instances and add them to the corresponding tables
+'''
+
 
 def delete_all(session):
     session.query(Album).delete()
