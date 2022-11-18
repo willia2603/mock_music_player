@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, Table, String, Date
 from sqlalchemy.orm import relationship
-from database import Base
+from database.database import Base
 from models.association_tables import album_artist_association, track_artist_association
 
 

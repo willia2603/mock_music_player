@@ -1,4 +1,4 @@
-from database import Base
+from database.database import Base
 from models.album import Album
 from models.artist import Artist
 from models.track import Track
