@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, Table, String, Date
 from sqlalchemy.orm import relationship
-from database import Base
+from database.database import Base
 from models.association_tables import album_artist_association
 
 # bidirectional relationship: da album posso arrivare a track e da track posso arrivare ad album

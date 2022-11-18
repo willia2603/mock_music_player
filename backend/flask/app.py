@@ -1,6 +1,14 @@
 from distutils.log import debug
 from flask import Flask
-from routes.frontend.frontend import home_page, artist_page, album_page, search_page, track_page, static_page, test
+from albums.albums import album_page
+from artists.artists import artist_page
+from tracks.tracks import track_page
+from test.test import test
+from homepage.homepage import home_page
+from search_bar.search_bar import search_page
+from static.static import static_page
+
+
 # ** __name__ -> name of the current Python module -> variable __name__ is used to tell where application is located. This is required to set some paths used by Flask applications. Here init app -> pass __name__ top id app and know in which package to look for resources
 app = Flask(__name__)
 

@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, abort, url_for, send_from_directory, jsonify
+from flask import Blueprint, render_template, abort, url_for, send_from_directory
 from jinja2.exceptions import TemplateNotFound
-from database import engine
+from database.database import engine
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 from models.track import Track

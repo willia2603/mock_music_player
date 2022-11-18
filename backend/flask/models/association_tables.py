@@ -1,5 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, Table, String, Date
-from database import Base
+from database.database import Base
 
 # * for many-to-many relationship between album and artist
 album_artist_association = Table(
