@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-SQLALCHEMY_DB_URI = 'sqlite:///sqlite.db'
+SQLALCHEMY_DB_URI = 'sqlite:///database/sqlite.db'
 
-# creates db after calling connect() if db doesn't exist. echo = True for logging (goes to stdout)
-engine = create_engine(SQLALCHEMY_DB_URI, echo=True)
+# creates db after calling connect() if db doesn't exist. echo = True for logging (goes to stdout) (add , echo=True)
+engine = create_engine(SQLALCHEMY_DB_URI)
 
 # BASE: defines structure of db -> allows to extend (add) model schemas (classes)
 Base = declarative_base()
