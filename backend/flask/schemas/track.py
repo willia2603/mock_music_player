@@ -10,21 +10,15 @@ class TrackSchemaBase(BaseModel):
     duration: int
     file: str
     popularity: int
+    album_id: int
     
     class Config:
         orm_mode = True
         
 class TrackSchemaFull(TrackSchemaBase):
     artists: List["ArtistSchemaBase"]
-    albums: List["AlbumSchemaBase"]
+    album: "AlbumSchemaBase"
     
-        
-# class can be extended
-# class TrackArtistsSchema(TrackSchema):
-#     artists: List[ArtistSchema]
-    
-# class TrackAlbumSchema(TrackSchema):
-#     albums: List[AlbumsSchema]
 
 from schemas.album import AlbumSchemaBase
 from schemas.artist import ArtistSchemaBase

@@ -1,11 +1,13 @@
 from models.album import Album
 from models.artist import Artist
 from models.track import Track
+from schemas.artist import ArtistSchemaBase
 from typing import List
+from sqlalchemy.orm import Session
 
 
 '''get the top “n” by popularity'''
-def get_top_n(n : int) -> List[Artist]:
+def get_top_n(n : int, session: Session) -> List[ArtistSchemaBase]:
     pass
 
 '''get all the artists'''
