@@ -31,7 +31,7 @@ The cons of relational Dbs is that one needs to know what kind of data they want
 Furthermore: typos are more common, and it is less secure, especially when running queries that make use of user input (SQL injection: https://www.w3schools.com/sql/sql_injection.asp).
 -> The advantage of using a query builder (library that allows to build queries using objects, ex: Query.from_(books).select("*").where(books.author_id == author_id)) is that typos can be less and the code can feel more 'native' to the programmers.
 Th disadvantage is that it still doesn't protect from SQL injection and other issues like the previous approach
--> The advantage of Object Relational Mappers (software that creates an object for each database table. lays between DB and application program, ex sqlAlchemy) allow to change the DB easily for example when migrating from one type of db to another (ex. alembic -> creates schema migrating files automatically -> fatser/easier migration )
+-> The advantage of Object Relational Mappers (software that creates an object for each database table. lays between DB and application program, ex in sqlAlchemy using session.query()) which allows for 'secure' queries, but on the other hand there's more abstraction and also when getting an item, it is hard to get only one column for example (but instead always get whole row with all cols)
 TBD 
 Task1:
 1. How do you see the one-to-many relationship represented? What about the many-to-many?
