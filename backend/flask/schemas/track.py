@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 from typing import List
 
-'''
-Schema used to convert a track returned by a query to a python object
-'''
+"""
+Schema used to convert a track (returned by a query to the db) to a python object
+"""
 class TrackSchemaBase(BaseModel):
     id: int
     name: str

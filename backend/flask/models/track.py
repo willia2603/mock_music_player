@@ -3,18 +3,18 @@ from sqlalchemy.orm import relationship
 from database.database import Base
 from models.association_tables import track_artist_association
 
-'''
+"""
 SQLAlchemy Track model. 
 Each track can be in one album only.
 Each track can be composed by more artists
-'''
+"""
 class Track(Base):
     __tablename__ = "track"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(64))
-    duration = Column(Integer)
-    file = Column(String(64))
-    popularity = Column(Integer)
+    name = Column(String(64), nullable=False)
+    duration = Column(Integer, nullable=False)
+    file = Column(String(64), nullable=False)
+    popularity = Column(Integer, nullable=False)
 
     # * for one-to-many bidirectional relationship with album (one song can be only in one album)
     album_id = Column(Integer, ForeignKey("album.id"))

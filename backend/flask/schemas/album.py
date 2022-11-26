@@ -1,14 +1,15 @@
 from pydantic import BaseModel
 from typing import List
 
-'''
+"""
 Schema used to convert an album returned by a query to a python object
-'''
+"""
 class AlbumSchemaBase(BaseModel):
     id: int
     name: str
     year: int
     popularity: int
+    img_cover: str
     
     class Config:
         orm_mode = True

@@ -2,9 +2,9 @@ from pydantic import BaseModel
 from typing import List
 from datetime import date
 
-'''
+"""
 Schema used to convert an artist returned by a query to a python object
-'''
+"""
 class ArtistSchemaBase(BaseModel):
     id: int
     name: str

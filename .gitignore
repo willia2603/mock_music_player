@@ -6,3 +6,11 @@ music/
 backend/flask/commands.txt
 *.jpeg
 
+
+backend/flask/notes.txt
+
+backend/flask/alembic.txt
+
+sqlite2.db
+
+backend/flask/test.py
