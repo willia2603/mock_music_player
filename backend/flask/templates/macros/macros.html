@@ -1,0 +1,20 @@
+{% macro display(l=[], class1="", class2="", name="", propriety="") -%}
+<section class={{class1}}>
+    <h2>{{name}}</h2>
+    <div class={{class2}}>
+        {% for el in l %}
+        <img src={{el[propriety]}} alt="cover"> {% endfor %}
+    </div>
+</section>
+{%- endmacro %} {% macro display_tracks(l=[], name="") -%}
+<h2>{{name}}</h2>
+<div class="tracks">
+    {% for el in l%}
+    <div class="track">
+        <span><u>Track Name:</u><br><br>{{el['name']}}</span>
+        <span><u>Album Name:</u> <br><br><a href="{{url_for('albums_page.albums')}}">{{el['album']['name']}}</a></span>
+        <span><u>Duration:</u><br><br>{{el['duration']}}</span>
+    </div>
+    {% endfor %}
+</div>
+{%- endmacro %}

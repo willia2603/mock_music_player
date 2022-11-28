@@ -1,14 +1,2 @@
-{% extends 'base.html' %} {% block title %}
-<title>{{title}}</title>{% endblock %} {% block content%}
-<h2>Tracks</h2>
-<div class="tracks">
-    {% for track in tracks%}
-    <div class="track">
-        <span><u>Track Name:</u><br><br>{{track.name}}</span>
-        <span><u>Album Name:</u> <br><br><a href="{{url_for('albums_page.albums')}}">{{track.album.name}}</a></span>
-
-        <span><u>Duration:</u><br><br>{{track.duration}}</span>
-    </div>
-    {% endfor %}
-</div>
-{% endblock %}
+{% extends 'base.html' %} {% import 'macros/macros.html' as m%}{% block title %}
+<title>{{title}}</title>{% endblock %} {% block content%} {{m.display_tracks(l=tracks, name=title)}} {% endblock %}

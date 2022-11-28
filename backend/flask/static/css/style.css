@@ -104,7 +104,8 @@ footer {
 .artists-disp img {
     object-fit: cover;
     object-position: 50% 50%;
-    width: auto;
+    aspect-ratio: 1;
+    width: 20em;
     height: auto;
     max-width: 30%;
     max-height: 30%;
