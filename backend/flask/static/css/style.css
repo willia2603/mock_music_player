@@ -88,8 +88,9 @@ footer {
 .albums-disp img {
     object-fit: cover;
     object-position: center center;
-    width: auto;
+    width: 20em;
     height: auto;
+    aspect-ratio: 1;
     max-width: 30%;
     max-height: 30%;
     padding: 1.5em;
