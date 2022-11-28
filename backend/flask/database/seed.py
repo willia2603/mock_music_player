@@ -35,7 +35,7 @@ def populate_db(session):
         popularity=2
     )
     track2 = Track(
-        name="02. Bummerland",
+        name="Bummerland",
         duration=22,
         file="./static/music/02. Bummerland.mp3",
         popularity=1
@@ -103,6 +103,7 @@ def populate_db(session):
         surname="Artist Surname",
         birthDate=datetime.date.today(),
         popularity=1,
+        artist_img='./static/images/ajr_artist_cover.jpeg',
         albums=[album1, album2],
         tracks=[track1, track2, track5, track6]
     )
@@ -113,8 +114,9 @@ def populate_db(session):
         surname="Muse",
         birthDate=datetime.date.today(),
         popularity=2,
+        artist_img='./static/images/muse_artist_cover.jpeg',
         albums=[album1, album3],
-        # tracks=[track3, track4, track5, track6]
+        tracks=[track3, track4, track5, track6]
     )
     
     # Muse album 
@@ -122,7 +124,7 @@ def populate_db(session):
         name="Origin Of Symmetry",
         year=2016,
         popularity=1,
-        img_cover="./static/images/album_placeholder.jpeg",
+        img_cover="./static/images/muse_cover_symmetry.jpeg",
         artists=[artist2]
     )
     
@@ -131,7 +133,7 @@ def populate_db(session):
         name="AJR and Muse Album 2",
         year=2016,
         popularity=3,
-        img_cover="./static/images/album_placeholder.jpeg",
+        img_cover="./static/images/ajr_muse_cover2.jpeg",
         artists=[artist1, artist2]
     )
     
@@ -141,16 +143,17 @@ def populate_db(session):
         surname="The Score",
         birthDate=datetime.date.today(),
         popularity=2,
+        artist_img='./static/images/thescore_artist_cover.jpeg',
+        
         # tracks=[track8, track9]
     )
     
     # The Score Track
     track8 = Track(
-        name="08 - Revolution.mp3",
+        name="Revolution",
         duration=33,
         file="./static/music/08 - Revolution.mp3",
         popularity=1,
-        # albums=[album6],
         artists= [artist3]
     )
     
@@ -166,15 +169,16 @@ def populate_db(session):
     
      # The Score track
     track9 = Track(
-        name="06 - Unstoppable.mp3",
+        name="Unstoppable",
         duration=12,
         file= "./static/music/06 - Unstoppable.mp3",
         popularity=1,
-        album=album6   
+        album=album6,
+        artists=[artist3]  
     )
     
     track10 = Track(
-        name="02 - Legend.mp3",
+        name="Legend",
         duration=12,
         file= "./static/music/06 - 02 - Legend.mp3",
         popularity=1,

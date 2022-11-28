@@ -11,6 +11,7 @@ class ArtistSchemaBase(BaseModel):
     surname: str
     birthDate: date
     popularity: int
+    artist_img: str
     
     class Config:
         orm_mode = True

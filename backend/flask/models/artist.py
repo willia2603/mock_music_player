@@ -15,6 +15,7 @@ class Artist(Base):
     surname = Column(String(64), nullable=False)
     birthDate = Column(Date, nullable=False)
     popularity = Column(Integer)
+    artist_img = Column(String(64))
 
     # * many-to-many bidirectional relationship between album and artist
     albums = relationship(
