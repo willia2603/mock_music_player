@@ -1,115 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} {% block title %}
+<title>{{title}}</title>{% endblock %} {% block content%}
+<h2>Tracks</h2>
+<div class="tracks">
+    {% for track in tracks%}
+    <div class="track">
+        <span><u>Track Name:</u><br><br>{{track.name}}</span>
+        <span><u>Album Name:</u> <br><br><a href="{{url_for('albums_page.albums')}}">{{track.album.name}}</a></span>
 
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Homepage</title>
-    <!-- what shows up on search engine -->
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="static/css/style.css">
-</head>
-
-<body>
-    <!-- <script src="" async defer></script> -->
-    <header>
-        <h1>Spotify (almost)</h1>
-    </header>
-    <div class="page-layout">
-        <nav>
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="{{url_for('homepage_page.homepage')}}">Homepage</a></li>
-                <li><a href="{{url_for('albums_page.albums')}}">Albums</a></li>
-                <li><a href="{{url_for('artists_page.artists')}}">Artists</a></li>
-                <li><a href="{{url_for('tracks_page.tracks')}}">Tracks</a></li>
-                <li><a href="{{url_for('search_page.search')}}">Search</a></li>
-            </ul>
-            <form>
-                <input type="search" name="q" placeholder="Search ...">
-                <input type="submit" value="Go!">
-            </form>
-        </nav>
-        <main>
-            <!-- <div class="main-content"> -->
-            <h2>Tracks</h2>
-            <div class="tracks">
-                <div class="track">
-                    <span>Track 1</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-                <div class="track">
-                    <span>Track 2</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-                <div class="track">
-                    <span>Track 3</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-                <div class="track">
-                    <span>Track 4</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-                <div class="track">
-                    <span>Track 5</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-                <div class="track">
-                    <span>Track 6</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-                <div class="track">
-                    <span>Track 7</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-                <div class="track">
-                    <span>Track 4</span>
-                    <a href="./artists.html">Artist</a>
-                    <a href="./albums.html">Album</a>
-                    <span>Time</span>
-                </div>
-            </div>
-
-            <!-- </div> -->
-        </main>
+        <span><u>Duration:</u><br><br>{{track.duration}}</span>
     </div>
-    <footer class="music-player">
-        <div>
-            <button>Previous</button>
-            <button>Play</button>
-            <button>Next</button>
-        </div>
-        <img src="static/images/album_placeholder.jpeg" alt="album cover">
-        <div>
-            <div>
-                <span>Song name</span>
-                <br>
-                <span>Album/Artist name</span>
-            </div>
-            <br>
-            <input type="range" min="1" max="100" value="50">
-        </div>
-        <div>
-            <span>Volume</span>
-            <input type="range" min="1" max="100" value="50">
-        </div>
-    </footer>
-</body>
-
-</html>
+    {% endfor %}
+</div>
+{% endblock %}
