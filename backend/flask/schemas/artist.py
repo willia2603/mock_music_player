@@ -19,9 +19,16 @@ class ArtistSchemaBase(BaseModel):
 class ArtistSchemaFull(ArtistSchemaBase):    
     albums: List["AlbumSchemaBase"]
     tracks: List["TrackSchemaBase"]
+    
+class ArtistSchemaAll(ArtistSchemaBase): 
+    albums: List["AlbumSchemaFull"]   
+    tracks: List["TrackSchemaFull"]
+ 
+    
 
 # import here to avoid circular import 
-from schemas.album import AlbumSchemaBase
-from schemas.track import TrackSchemaBase
+from schemas.album import AlbumSchemaBase, AlbumSchemaFull
+from schemas.track import TrackSchemaBase, TrackSchemaFull
 ArtistSchemaBase.update_forward_refs()
 ArtistSchemaFull.update_forward_refs()
+ArtistSchemaAll.update_forward_refs()
