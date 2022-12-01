@@ -12,11 +12,11 @@ def tracks():
     try:
         with Session(engine) as session:
             tracks = track.get_all(session)
-            context = {
-                'title': 'Tracks',
-                'tracks': tracks
-            }
-            return render_template('tracks.html', **context)
+        context = {
+            'title': 'Tracks',
+            'tracks': tracks
+        }
+        return render_template('tracks.html', **context)
     except TemplateNotFound:
         print('error')
         abort(404)

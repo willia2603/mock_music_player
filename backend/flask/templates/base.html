@@ -9,7 +9,7 @@
     <!-- what shows up on search engine -->
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
@@ -34,28 +34,7 @@
         </nav>
         <main>
             <!-- block content -->
-            {% block content %}
-            <section class="albums-disp">
-                <h2>Top 5 Albums</h2>
-                <div class="details">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                </div>
-            </section>
-            <section class="artists-disp">
-                <h2>To 5 Artists</h2>
-                <div class="details">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                </div>
-            </section>
-            {% endblock %}
+            {% block content %} content goes here {% endblock %}
         </main>
     </div>
     <!-- leave like this for now -->
