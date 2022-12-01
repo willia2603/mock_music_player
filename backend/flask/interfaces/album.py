@@ -58,6 +58,7 @@ def get_match(word : str, session: Session) -> List[AlbumSchemaFull]:
     :type session: Session
     :return: A list of AlbumSchemaFull objects
     """
+    # res = session.query(Album).join(album_artist_association, Album.id == album_artist_association.columns.album_id).join(Artist, Artist.id == album_artist_association.columns.artist_id).filter(or_(Artist.name.like(f'%{word}%'), Album.name.like(f'%{word}%')))
     res = session.query(Album).filter(or_(Album.name.like(f'%{word}%')))
     albums = [AlbumSchemaFull.from_orm(x) for x in res]
     return albums

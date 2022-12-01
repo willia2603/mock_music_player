@@ -1,101 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Homepage</title>
-    <!-- what shows up on search engine -->
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="static/css/style.css">
-</head>
-
-<body>
-    <!-- <script src="" async defer></script> -->
-    <header>
-        <h1>Spotify (almost)</h1>
-    </header>
-    <div class="page-layout">
-        <nav>
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="{{url_for('homepage_page.homepage')}}">Homepage</a></li>
-                <li><a href="{{url_for('albums_page.albums')}}">Albums</a></li>
-                <li><a href="{{url_for('artists_page.artists')}}">Artists</a></li>
-                <li><a href="{{url_for('tracks_page.tracks')}}">Tracks</a></li>
-                <li><a href="{{url_for('search_page.search')}}">Search</a></li>
-            </ul>
-            <form>
-                <input type="search" name="q" placeholder="Search ...">
-                <input type="submit" value="Go!">
-            </form>
-        </nav>
-        <main>
-            <h2>Search results</h2>
-            <section class="tracks-disp">
-                <h3>Tracks</h3>
-                <div class="tracks">
-                    <div class="track">
-                        <span>Track 1</span>
-                        <a href="./artists.html">Artist</a>
-                        <a href="./albums.html">Album</a>
-                        <span>Time</span>
-                    </div>
-                    <div class="track">
-                        <span>Track 2</span>
-                        <a href="./artists.html">Artist</a>
-                        <a href="./albums.html">Album</a>
-                        <span>Time</span>
-                    </div>
-                </div>
-            </section>
-            <section class="albums-disp">
-                <h3>Albums</h3>
-                <div>
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/album_placeholder.jpeg" alt="album cover">
-                </div>
-            </section>
-            <section class="artists-disp">
-                <h3>Artists</h3>
-                <div>
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                    <img src="static/images/artist_placeholder.jpeg" alt="album cover">
-                </div>
-            </section>
-        </main>
-    </div>
-    <footer class="music-player">
-        <div>
-            <button>Previous</button>
-            <button>Play</button>
-            <button>Next</button>
-        </div>
-        <img src="static/images/album_placeholder.jpeg" alt="album cover">
-        <div>
-            <div>
-                <span>Song name</span>
-                <br>
-                <span>Album/Artist name</span>
-            </div>
-            <br>
-            <input type="range" min="1" max="100" value="50">
-        </div>
-        <div>
-            <span>Volume</span>
-            <input type="range" min="1" max="100" value="50">
-        </div>
-    </footer>
-</body>
-
-</body>
-
-</html>
+{% extends 'base.html' %} {% import 'macros/macros.html' as m%} {% block title %}
+<title>{{title}}</title>
+{% endblock %} {% block content%} {% if tracks | length >0 or albums | length > 0 or artists | length > 0 %}
+<h3>Tracks</h3>
+{{m.display_tracks(l=tracks)}}
+<h3>Albums</h3>
+{{m.display(l=albums, class1="albums-disp", class2="details", propriety='img_cover', route='albums_page.goto_id')}}
+<h3>Artists</h3>
+{{m.display(l=artists, class1="artists-disp", class2="details",propriety='artist_img', route='artists_page.goto_artist')}} {% else %}
+<p>No results</p>
+{% endif %} {% endblock %}

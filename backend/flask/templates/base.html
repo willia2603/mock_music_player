@@ -27,7 +27,7 @@
                 <li><a href="{{url_for(el + '_page' + '.' + el)}}"> {{el | capitalize}}</a></li>
                 {% endfor %}
             </ul>
-            <form>
+            <form action="{{url_for('search_page.search')}}">
                 <input type="search" name="q" placeholder="Search ...">
                 <input type="submit" value="Go!">
             </form>
@@ -44,7 +44,7 @@
             <button>Play</button>
             <button>Next</button>
         </div>
-        <img src="static/images/album_placeholder.jpeg" alt="album cover">
+        <img src="/static/images/album_placeholder.jpeg" alt="album cover">
         <div>
             <div>
                 <span>Song name</span>
