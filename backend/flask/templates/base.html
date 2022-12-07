@@ -23,7 +23,7 @@
             <h2>Menu</h2>
             <ul>
                 <!-- for loop -->
-                {% for el in ['homepage', 'albums', 'artists', 'tracks', 'search']%}
+                {% for el in ['homepage', 'albums', 'artists', 'tracks']%}
                 <li><a href="{{url_for(el + '_page' + '.' + el)}}"> {{el | capitalize}}</a></li>
                 {% endfor %}
             </ul>
@@ -40,25 +40,26 @@
     <!-- leave like this for now -->
     <footer class="music-player">
         <div>
-            <button>Previous</button>
-            <button>Play</button>
-            <button>Next</button>
+            <button class='prev-btn' onclick="playPrevious()">Previous</button>
+            <button class='play-btn' onclick="playPause()">Play</button>
+            <button class='next-btn' onclick="playNext()">Next</button>
         </div>
-        <img src="/static/images/album_placeholder.jpeg" alt="album cover">
+        <img class='player-cover' src="/static/images/album_placeholder.jpeg" alt="album cover">
         <div>
-            <div>
-                <span>Song name</span>
-                <br>
-                <span>Album/Artist name</span>
-            </div>
+            <span class="player-song-name"></span>
             <br>
-            <input type="range" min="1" max="100" value="50">
+            <span class="player-album"></span>
+            <br>
+            <span class="player-artist"></span>
+            <br>
+            <input class="player-slider" type="range" min="1" max="100" value="0" onchange="setSlider()">
         </div>
         <div>
             <span>Volume</span>
-            <input type="range" min="1" max="100" value="50">
+            <input class="player-volume" type="range" min="1" max="100" value="30" onchange="setVolume()">
         </div>
     </footer>
+    <script src="/static/js/main.js"></script>
 </body>
 
 

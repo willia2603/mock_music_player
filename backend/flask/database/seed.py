@@ -51,7 +51,7 @@ def populate_db(session):
     track4 = Track(
         name="Won't Stand Down",
         duration=22,
-        file="/static/music/04. Won't Stand Down.mp3",
+        file="/static/music/04. Wont Stand Down.mp3",
         popularity=2
     )
 
@@ -85,9 +85,8 @@ def populate_db(session):
         popularity=1,
         img_cover="/static/images/ajr_cover.jpeg",
         tracks=[track1, track2],
-
-
     )
+
     # Muse album
     album3 = Album(
         name="Will Of The People",
@@ -107,6 +106,24 @@ def populate_db(session):
         albums=[album1, album2],
         tracks=[track1, track2, track5, track6]
     )
+    
+    track13 = Track(
+        name="3 O'Clock Things",
+        duration=22,
+        file="/static/music/03. 3 O'Clock Things.mp3",
+        popularity=1,
+        album=album2,
+        artists=[artist1]
+    )
+    
+    track14 = Track(
+        name="Way Less Sad",
+        duration=22,
+        file="/static/music/12. Way Less Sad.mp3",
+        popularity=1,
+        album=album2,
+        artists=[artist1]
+    )
 
     
     track7 = Track(
@@ -124,7 +141,8 @@ def populate_db(session):
         # artists=[artist2],
         tracks=[track7]
     )
-        # Muse
+    
+    # Muse
     artist2 = Artist(
         name="Muse",
         surname="Muse",
@@ -134,6 +152,26 @@ def populate_db(session):
         albums=[album1, album3,album4],
         tracks=[track3, track4, track5, track6, track7]
     )
+    
+    track15 = Track(
+        name="Euphoria",
+        duration=12,
+        file= "/static/music/09. Euphoria.mp3",
+        popularity=1,
+        album=album3,
+        artists=[artist2]
+        
+    )
+    
+    track16 = Track(
+        name="Verona",
+        duration=12,
+        file= "/static/music/08. Verona.mp3",
+        popularity=1,
+        album=album3,
+        artists=[artist2]   
+    )
+    
     track11 = Track(
         name="Ohter AJR Muse Track",
         duration=32,
@@ -196,7 +234,27 @@ def populate_db(session):
     track10 = Track(
         name="Legend",
         duration=12,
-        file= "/static/music/06 - 02 - Legend.mp3",
+        file= "/static/music/02 - Legend.mp3",
+        popularity=1,
+        album=album6,
+        artists=[artist3]
+        
+    )
+    
+    track11 = Track(
+        name="Never Going Back",
+        duration=12,
+        file= "/static/music/01 - Never Going Back.mp3",
+        popularity=1,
+        album=album6,
+        artists=[artist3]
+        
+    )
+    
+    track12 = Track(
+        name="Higher",
+        duration=12,
+        file= "/static/music/10 - Higher.mp3",
         popularity=1,
         album=album6,
         artists=[artist3]
@@ -206,7 +264,7 @@ def populate_db(session):
     session.add_all(
         [artist1, artist2, artist3,
          album1, album2, album3, album4, album5, album6,
-         track1, track2, track3, track4, track5, track6, track7, track8, track9, track10, track11])
+         track1, track2, track3, track4, track5, track6, track7, track8, track9, track10, track11,track12, track13, track14, track15, track16])
 
 
 with Session(engine) as session:

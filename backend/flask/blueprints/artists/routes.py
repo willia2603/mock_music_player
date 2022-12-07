@@ -31,9 +31,10 @@ def goto_artist(id: int):
         context = {
             'title': art.name,
             'artist_img': art.artist_img,
-            'tracks': art.tracks,
+            'tracks': [track.dict() for track in art.tracks],
             'albums': art.albums
         }
+        print(art.tracks)
         return render_template('artists_info.html', **context)
     except TemplateNotFound:
         print('error')

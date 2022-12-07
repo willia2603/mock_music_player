@@ -22,7 +22,7 @@ def search():
             
         context = {
             'title': 'Search Results',
-            'tracks': tracks,
+            'tracks': [track.dict() for track in tracks],
             'albums': albums,
             'artists': artists
         }

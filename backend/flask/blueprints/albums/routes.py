@@ -3,6 +3,7 @@ from jinja2.exceptions import TemplateNotFound
 import interfaces.album as album
 from sqlalchemy.orm import Session
 from database.database import engine
+import json
 
 # A Blueprint is a way to organize a group of related views and other code.
 album_page = Blueprint('albums_page', __name__,
@@ -35,7 +36,8 @@ def goto_id(id: int):
             'title': f'Album {id}',
             'album_name': album_name,
             'album_cover':album_cover,
-            'tracks': tracks
+            'tracks': [track.dict() for track in tracks]
+            # 'tracks': tracks
         }
         return render_template('albums_tracks.html', **context)
     except TemplateNotFound:

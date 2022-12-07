@@ -2,7 +2,7 @@ from models.album import Album
 from models.artist import Artist
 from models.track import Track
 from models.association_tables import album_artist_association
-from schemas.artist import ArtistSchemaFull, ArtistSchemaAll
+from schemas.artist import ArtistSchemaFull
 from schemas.album import AlbumSchemaFull
 from schemas.track import TrackSchemaFull
 from typing import List
@@ -103,9 +103,9 @@ def get_match(word : str, session: Session) -> List[ArtistSchemaFull]:
     artists = [ArtistSchemaFull.from_orm(x) for x in res]
     return artists
     
-def get_artist(artist_id: int, session: Session) -> ArtistSchemaAll:
+def get_artist(artist_id: int, session: Session) -> ArtistSchemaFull:
     res = session.query(Artist).join(album_artist_association, Artist.id == album_artist_association.columns.artist_id).filter(Artist.id == artist_id)
-    artist = [ArtistSchemaAll.from_orm(x) for x in res]
+    artist = [ArtistSchemaFull.from_orm(x) for x in res]
     return artist
 
     

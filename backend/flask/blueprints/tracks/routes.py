@@ -14,7 +14,7 @@ def tracks():
             tracks = track.get_all(session)
         context = {
             'title': 'Tracks',
-            'tracks': tracks
+            'tracks': [track.dict() for track in tracks]
         }
         return render_template('tracks.html', **context)
     except TemplateNotFound:

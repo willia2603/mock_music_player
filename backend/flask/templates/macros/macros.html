@@ -9,10 +9,10 @@
 </section>
 {%- endmacro %} {% macro display_tracks(l=[], name="") -%}
 <h2>{{name}}</h2>
-<div class="tracks">
+<div class="tracks" onmouseover="set_track_list({{l}})">
     {% for el in l%}
     <div class="track">
-        <span><u>Track Name:</u><br><br>{{el['name']}}</span>
+        <span><u>Track Name:</u><br><br><a onclick='loadTrack({{el}})'>{{el['name']}}</a></span>
         <span><u>Album Name:</u> <br><br><a href="{{url_for('albums_page.goto_id', id=el.album_id)}}">{{el['album']['name']}}</a></span>
         <span><u>Artist:</u><br><br>
             {% for artist in el.artists %}
@@ -23,4 +23,6 @@
     </div>
     {% endfor %}
 </div>
+
+
 {%- endmacro %}

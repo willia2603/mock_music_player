@@ -130,9 +130,9 @@ footer {
     object-fit: cover;
     object-position: center center;
     width: auto;
-    height: auto;
+    height: 10%;
     max-width: 20%;
-    max-height: 20%;
+    /* max-height: 20%; */
     padding: 1.5em;
 }
 
