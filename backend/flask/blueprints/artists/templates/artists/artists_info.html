@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% import 'macros/macros.html' as m%}{% block title %}
+<title>{{title}}</title>{% endblock %} {% block content%}
+<div class="artists-disp">
+    <h2>{{title}}</h2>
+    <img src={{artist_img}} alt="cover">
+</div>
+<h3>Tracks</h3>
+{{m.display_tracks(l=tracks, name="")}}
+<h3>Albums</h3>
+{{m.display(l=albums, class1="albums-disp", propriety='img_cover', route='albums_page.goto_id')}} {% endblock %}

@@ -17,7 +17,7 @@ def get_top_n(n: int, session: Session) -> List[AlbumSchemaFull]:
     :type session: Session
     :return: A list of AlbumSchemaFull objects
     """
-    res = session.query(Album).order_by(Album.popularity).slice(1, n+1)
+    res = session.query(Album).order_by(Album.popularity).limit(n)
     albums = [AlbumSchemaFull.from_orm(x) for x in res]
     return albums
 

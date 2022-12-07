@@ -1,0 +1,2 @@
+{% extends 'base.html' %} {% import 'macros/macros.html' as m%}{% block title %}
+<title>{{title}}</title>{% endblock %} {% block content%} {{m.display_tracks(l=tracks, name=title)}} {% endblock %}
