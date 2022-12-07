@@ -23,7 +23,7 @@ def get_top_n(n : int, session: Session) -> List[ArtistSchemaFull]:
     :type session: Session
     :return: A list of ArtistSchemaFull objects
     """
-    res = session.query(Artist).order_by(Artist.popularity).slice(1, n+1)
+    res = session.query(Artist).order_by(Artist.popularity).limit(n)
     artists = [ArtistSchemaFull.from_orm(x) for x in res]
     return artists
 
@@ -102,4 +102,10 @@ def get_match(word : str, session: Session) -> List[ArtistSchemaFull]:
     res = session.query(Artist).filter(or_(Artist.name.like(f"%{word}%"), Artist.surname.like(f"%{word}%")))
     artists = [ArtistSchemaFull.from_orm(x) for x in res]
     return artists
+    
+def get_artist(artist_id: int, session: Session) -> ArtistSchemaFull:
+    res = session.query(Artist).join(album_artist_association, Artist.id == album_artist_association.columns.artist_id).filter(Artist.id == artist_id)
+    artist = [ArtistSchemaFull.from_orm(x) for x in res]
+    return artist
+
     

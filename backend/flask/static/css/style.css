@@ -85,13 +85,19 @@ footer {
     display: flex;
 }
 
+.details a {
+    min-width: 33%;
+    min-width: 33%;
+}
+
 .albums-disp img {
     object-fit: cover;
     object-position: center center;
-    width: auto;
+    width: 20em;
     height: auto;
-    max-width: 30%;
-    max-height: 30%;
+    aspect-ratio: 1;
+    max-width: 100%;
+    max-height: 100%;
     padding: 1.5em;
 }
 
@@ -103,10 +109,11 @@ footer {
 .artists-disp img {
     object-fit: cover;
     object-position: 50% 50%;
-    width: auto;
+    aspect-ratio: 1;
+    width: 20em;
     height: auto;
-    max-width: 30%;
-    max-height: 30%;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 50%;
     padding: 1.0em;
 }
@@ -123,9 +130,9 @@ footer {
     object-fit: cover;
     object-position: center center;
     width: auto;
-    height: auto;
+    height: 10%;
     max-width: 20%;
-    max-height: 20%;
+    /* max-height: 20%; */
     padding: 1.5em;
 }
 
@@ -136,6 +143,7 @@ footer {
     padding: 2em;
     margin-top: 1em;
     margin-bottom: 1em;
+    text-align: center;
 }
 
 @media (max-width: 768px) {

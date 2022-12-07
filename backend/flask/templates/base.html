@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> {% block title %}
+    <title>Homepage</title>{% endblock %}
+    <!-- what shows up on search engine -->
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <!-- <script src="" async defer></script> -->
+    <header>
+        <h1>Spotify (almost)</h1>
+    </header>
+    <div class="page-layout">
+
+        <nav>
+            <h2>Menu</h2>
+            <ul>
+                <!-- for loop -->
+                {% for el in ['homepage', 'albums', 'artists', 'tracks']%}
+                <li><a href="{{url_for(el + '_page' + '.' + el)}}"> {{el | capitalize}}</a></li>
+                {% endfor %}
+            </ul>
+            <form action="{{url_for('search_page.search')}}">
+                <input type="search" name="q" placeholder="Search ...">
+                <input type="submit" value="Go!">
+            </form>
+        </nav>
+        <main>
+            <!-- block content -->
+            {% block content %} content goes here {% endblock %}
+        </main>
+    </div>
+    <!-- leave like this for now -->
+    <footer class="music-player">
+        <div>
+            <button class='prev-btn' onclick="playPrevious()">Previous</button>
+            <button class='play-btn' onclick="playPause()">Play</button>
+            <button class='next-btn' onclick="playNext()">Next</button>
+        </div>
+        <img class='player-cover' src="/static/images/album_placeholder.jpeg" alt="album cover">
+        <div>
+            <span class="player-song-name"></span>
+            <br>
+            <span class="player-album"></span>
+            <br>
+            <span class="player-artist"></span>
+            <br>
+            <input class="player-slider" type="range" min="1" max="100" value="0" onchange="setSlider()">
+        </div>
+        <div>
+            <span>Volume</span>
+            <input class="player-volume" type="range" min="1" max="100" value="30" onchange="setVolume()">
+        </div>
+    </footer>
+    <script src="/static/js/main.js"></script>
+</body>
+
+
+
+</html>

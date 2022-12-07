@@ -19,8 +19,10 @@ class TrackSchemaFull(TrackSchemaBase):
     artists: List["ArtistSchemaBase"]
     album: "AlbumSchemaBase"
     
+    
 
-from schemas.album import AlbumSchemaBase
 from schemas.artist import ArtistSchemaBase
+from schemas.album import AlbumSchemaBase
+
 TrackSchemaBase.update_forward_refs()
 TrackSchemaFull.update_forward_refs()
