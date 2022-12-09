@@ -3,7 +3,7 @@ from jinja2.exceptions import TemplateNotFound
 from sqlalchemy.orm import Session
 from database.database import engine
 import interfaces.artist as artist
-import interfaces.album as album
+
 
 artist_page = Blueprint('artists_page', __name__,
                         template_folder='./templates/artists')
@@ -34,7 +34,6 @@ def goto_artist(id: int):
             'tracks': [track.dict() for track in art.tracks],
             'albums': art.albums
         }
-        print(art.tracks)
         return render_template('artists_info.html', **context)
     except TemplateNotFound:
         print('error')
