@@ -1,4 +1,7 @@
 // TODO: 1. add time left, 2. use real duration of track as duration (see stack overflow), 3. change img of cover when no song is playing 4. rifai con eyeD3?
+/**
+This file is used to setup the music player.
+ */
 "use strict";
 let track_list;
 
@@ -32,7 +35,7 @@ function set_track_list(list) {
 }
 
 /**
- * It loads the track, updates the track info, and starts playing the track
+ * Loads the track, updates the track info, and starts playing the track
  * @param track - the track object that contains all the information about the track
  */
 function loadTrack(track) {

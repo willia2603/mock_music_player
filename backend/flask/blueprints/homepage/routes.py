@@ -7,7 +7,7 @@ import interfaces.artist as artist
 
 home_page = Blueprint('homepage_page', __name__, template_folder='./templates/homepage')
 
-@home_page.route('/')
+@home_page.get('/')
 def homepage():
     try:
         with Session(engine) as session:

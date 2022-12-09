@@ -7,11 +7,10 @@ import interfaces.artist as artist
 import interfaces.track as track
 from flask import request
 
-#   TODO use apis?
 search_page = Blueprint('search_page', __name__,
                         template_folder='./templates/search_bar')
                         
-@search_page.route('/search')
+@search_page.get('/search')
 def search():
     try:
         word = request.args.getlist('q')[0]

@@ -7,7 +7,7 @@ from database.database import engine
 track_page = Blueprint('tracks_page', __name__,
                        template_folder='./templates/tracks')
                        
-@track_page.route('/tracks')
+@track_page.get('/tracks')
 def tracks():
     try:
         with Session(engine) as session:

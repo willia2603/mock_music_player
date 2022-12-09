@@ -14,3 +14,5 @@ backend/flask/alembic.txt
 sqlite2.db
 
 backend/flask/test.py
+
+backend/flask/node_modules/

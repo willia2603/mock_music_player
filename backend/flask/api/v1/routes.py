@@ -7,11 +7,14 @@ import interfaces.track as track
 import interfaces.artist as artist
 from flask import request
 
+'''
+This API is used to interact more easily with Vue and React. Else it would not be needed.
+'''
 
 api = Blueprint('api', __name__)
 
 # OK
-@api.route('/tracks')
+@api.get('/tracks')
 def get_all_tracks():
     with Session(engine) as session:
         tracks = track.get_all(session)
@@ -22,7 +25,7 @@ def get_all_tracks():
     return context
     
 # OK
-@api.route('/albums')
+@api.get('/albums')
 def get_all_albums():
     with Session(engine) as session:
             albums = album.get_all(session)
@@ -34,7 +37,7 @@ def get_all_albums():
     return context
     
 # OK
-@api.route('/album_tracks/<int:id>')
+@api.get('/album_tracks/<int:id>')
 def get_album_info(id : int):
     with Session(engine) as session:
         tracks = album.get_tracks(id, session)
@@ -49,7 +52,7 @@ def get_album_info(id : int):
     return context
 
 # OK
-@api.route('/artists/<int:id>')
+@api.get('/artists/<int:id>')
 def get_artist_info(id: int):
     
     with Session(engine) as session:
@@ -62,8 +65,8 @@ def get_artist_info(id: int):
     }
     return context
     
-# to test
-@api.route('/search')
+# OK
+@api.get('/search')
 def get_match():
     word = request.args.getlist('q')[0]
     with Session(engine) as session:
@@ -78,8 +81,8 @@ def get_match():
         'artists': [artist.dict() for artist in artists]
     }
     return context
-# NO
-@api.route('/hp')
+# OK
+@api.get('/hp')
 def get_homepage_content():
     with Session(engine) as session:
         albums = album.get_top_n(5, session)
