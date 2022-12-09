@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from interfaces.track import get_top_n
 from typing import List
 from schemas.track import TrackSchemaFull
+from api.v1.routes import api
 
 
 
@@ -34,6 +35,7 @@ app.register_blueprint(artist_page)
 app.register_blueprint(album_page)
 app.register_blueprint(search_page)
 app.register_blueprint(track_page)
+app.register_blueprint(api, url_prefix='/api/v1')
 
 
 
