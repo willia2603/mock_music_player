@@ -16,3 +16,7 @@ sqlite2.db
 backend/flask/test.py
 
 backend/flask/node_modules/
+
+backend/flask/vue/.vscode/
+
+backend/flask/vue/comments.md
