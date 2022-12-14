@@ -10,11 +10,17 @@ from interfaces.track import get_top_n
 from typing import List
 from schemas.track import TrackSchemaFull
 from api.v1.routes import api
+from flask_cors import CORS
 
 
 
 # ** __name__ -> name of the current Python module -> variable __name__ is used to tell where application is located. This is required to set some paths used by Flask applications. Here init app -> pass __name__ top id app and know in which package to look for resources
 app = Flask(__name__, template_folder='templates/jinja2')
+
+# To avoid CORS error
+# origins -> define which pages can make request (make it safe)
+CORS(app, origins=["http://localhost:5173"])
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # ** You can add variable sections to a URL by marking sections with <variable_name>.
 # ** Your function then receives the <variable_name> as a keyword argument.
@@ -23,7 +29,7 @@ app = Flask(__name__, template_folder='templates/jinja2')
 @app.get("/static/<path:path>")
 def static_pages(path : str):
     return send_from_directory("static", path)
-    
+
 @app.get("/test")
 def return_first_db_track() -> TrackSchemaFull:
     with Session(engine) as session:

@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
     // createWebHistory -> used to go back and forth with arrows in browser 
@@ -8,43 +7,65 @@ const router = createRouter({
     routes: [{
             path: '/',
             name: 'home',
-            component: HomeView
+            // Lazy loading
+            component: () =>
+                import ('../views/HomeView.vue')
         },
         {
             path: '/artists',
             name: 'artists',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () =>
-                import ('../views/ArtistsView.vue')
+                import ('../views/artists/ArtistsView.vue')
+        },
+        {
+            path: '/artists/:id',
+            name: 'artistsInfo',
+            // to pass id as prop to the view
+            props: true,
+            component: () =>
+                import ('../views/artists/ArtistsInfoView.vue')
         },
         {
             path: '/albums',
             name: 'albums',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () =>
-                import ('../views/AlbumsView.vue')
+                import ('../views/albums/AlbumsView.vue')
+        },
+        {
+            path: '/albums/:id',
+            name: 'albumTracks',
+            props: true,
+            component: () =>
+                import ('../views/albums/AlbumTracksView.vue')
         },
         {
             path: '/tracks',
             name: 'tracks',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () =>
                 import ('../views/TracksView.vue')
         },
         {
             path: '/search',
             name: 'search',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () =>
                 import ('../views/SearchView.vue')
+        },
+        // redirect
+        {
+            path: '/artist',
+            redirect: '/artists'
+        },
+        {
+            path: '/album',
+            redirect: '/albums'
+        },
+        // catch-all
+        {
+            path: '/:catchAll(.*)',
+            name: 'notFound',
+            component: () =>
+                import ('../views/404View.vue')
+
         }
     ]
 })

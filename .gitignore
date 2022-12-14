@@ -20,3 +20,9 @@ backend/flask/node_modules/
 backend/flask/vue/.vscode/
 
 backend/flask/vue/comments.md
+
+backend/flask/vue/src/views/TestView.vue
+
+backend/flask/vue/src/views/Test2.vue
+
+backend/flask/vue/vue-notes.md

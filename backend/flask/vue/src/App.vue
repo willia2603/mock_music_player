@@ -16,7 +16,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <li><RouterLink :to="{name: 'albums'}">Albums</RouterLink></li>
         <li><RouterLink :to="{name: 'artists'}">Artists</RouterLink></li>
         <li><RouterLink :to="{name: 'tracks'}">Tracks</RouterLink></li>
-        <li><RouterLink :to="{name: 'search'}">Albums</RouterLink></li>
+        <li><RouterLink :to="{name: 'search'}">Search</RouterLink></li>
         </ul>
         <!-- <form action="{{url_for('search_page.search')}}"> -->
         <form>
@@ -26,31 +26,33 @@ import { RouterLink, RouterView } from 'vue-router'
     </nav>
     <main>
       <!-- * component gets loaded here -->
-        <RouterView></RouterView>
+      <!-- * :key to make route links with params rerender component as well -->
+        <RouterView :key="$route.path"></RouterView>
     </main>
   </div>
   <!-- TODO make music player component -->
   <footer class="music-player">
-      <div>
-          <button class='prev-btn'>Previous</button>
-          <button class='play-btn'>Play</button>
-          <button class='next-btn'>Next</button>
-      </div>
-      <img class='player-cover' src="src/assets/album_placeholder.jpeg" alt="album cover">
-      <div>
-          <span class="player-song-name"> No song is playing</span>
-          <br>
-          <span class="player-album"></span>
-          <br>
-          <span class="player-artist"></span>
-          <br>
-          <input class="player-slider" type="range" min="1" max="100" value="0">
-      </div>
-      <div>
-          <span>Volume</span>
-          <input class="player-volume" type="range" min="1" max="100" value="30">
-      </div>
-  </footer>
+    <div>
+        <button class='prev-btn' onclick="playPrevious()">Previous</button>
+        <button class='play-btn' onclick="playPause()">Play</button>
+        <button class='next-btn' onclick="playNext()">Next</button>
+    </div>
+    <img class='player-cover' src="/static/images/album_placeholder.jpeg" alt="album cover">
+    <div>
+        <span class="player-song-name"> No song is playing</span>
+        <br>
+        <span class="player-album"></span>
+        <br>
+        <span class="player-artist"></span>
+        <br>
+        <input class="player-slider" type="range" min="1" max="100" value="0" onchange="setSlider()">
+    </div>
+    <div>
+        <span>Volume</span>
+        <input class="player-volume" type="range" min="1" max="100" value="30" onchange="setVolume()">
+    </div>
+</footer>
+
 
 </template>
 

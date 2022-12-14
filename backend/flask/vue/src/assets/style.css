@@ -10,7 +10,7 @@ body {
 }
 
 body {
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     background-color: #9c4dcc;
 }
@@ -29,6 +29,7 @@ nav {
     /* padding-left: 2em; */
     width: 25%;
     text-align: center;
+    min-height: 50vh;
 }
 
 a:hover {
@@ -77,45 +78,8 @@ footer {
 .page-layout {
     display: flex;
     flex-wrap: wrap;
-    height: 200%;
+    height: 100%;
     margin-bottom: 100px;
-}
-
-.details {
-    display: flex;
-}
-
-.details a {
-    min-width: 33%;
-    min-width: 33%;
-}
-
-.albums-disp img {
-    object-fit: cover;
-    object-position: center center;
-    width: 20em;
-    height: auto;
-    aspect-ratio: 1;
-    max-width: 100%;
-    max-height: 100%;
-    padding: 1.5em;
-}
-
-.albums-disp,
-.artists-disp {
-    overflow-x: scroll;
-}
-
-.artists-disp img {
-    object-fit: cover;
-    object-position: 50% 50%;
-    aspect-ratio: 1;
-    width: 20em;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 50%;
-    padding: 1.0em;
 }
 
 .music-player {
@@ -136,15 +100,8 @@ footer {
     padding: 1.5em;
 }
 
-.track {
-    display: flex;
-    justify-content: space-around;
-    border: solid #38006b;
-    padding: 2em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    text-align: center;
-}
+
+/* TODO fix player size when screen very big */
 
 @media (max-width: 768px) {
     .page-layout {
