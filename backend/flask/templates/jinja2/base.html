@@ -1,3 +1,4 @@
+<!-- Jinja2 is used for all html templates -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,6 @@
 </head>
 
 <body>
-    <!-- <script src="" async defer></script> -->
     <header>
         <h1>Spotify (almost)</h1>
     </header>
@@ -37,7 +37,6 @@
             {% block content %} content goes here {% endblock %}
         </main>
     </div>
-    <!-- leave like this for now -->
     <footer class="music-player">
         <div>
             <button class='prev-btn' onclick="playPrevious()">Previous</button>
@@ -46,7 +45,7 @@
         </div>
         <img class='player-cover' src="/static/images/album_placeholder.jpeg" alt="album cover">
         <div>
-            <span class="player-song-name"></span>
+            <span class="player-song-name"> No song is playing</span>
             <br>
             <span class="player-album"></span>
             <br>
@@ -59,7 +58,7 @@
             <input class="player-volume" type="range" min="1" max="100" value="30" onchange="setVolume()">
         </div>
     </footer>
-    <script src="/static/js/main.js"></script>
+    <script src="/static/js/player.js"></script>
 </body>
 
 

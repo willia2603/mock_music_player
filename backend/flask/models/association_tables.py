@@ -1,7 +1,8 @@
 from sqlalchemy import Column, ForeignKey, Integer, Table, String, Date
 from database.database import Base
+
 """
-SQLAlchemy associations tables used to create the different relationships. 
+SQL Alchemy association tables used to create the different relationships. 
 """
 # * for many-to-many relationship between album and artist
 album_artist_association = Table(
