@@ -14,12 +14,15 @@ const title = ref("")
 const route_name1 = 'albumTracks'
 const route_name2 = 'artistsInfo'
 
-
+const props = defineProps({
+    query: {
+        required: false
+    },
+})
 
 
 async function getData() {
-    // TODO: get real query
-    let res = await axios.get(`http://localhost:5000/api/v1/search?q=muse`);
+    let res = await axios.get(`http://localhost:5000/api/v1/search?q=${props.query}`);
     tracks.value = res.data.tracks
     albums.value = res.data.albums
     artists.value = res.data.artists
@@ -35,10 +38,6 @@ getData()
 <template>
 <h1>{{title}}</h1>
 
-<!-- {{tracks.length}}
-{{albums.length}}
-{{artists.length}} -->
-<!-- {{is_empty()}} -->
 <!-- TODO: see how to render based on whether lists ar present or not -->
 <!-- <div v-if="!is_empty()"> -->
 <DisplayTracks name="Tracks" :tracks="tracks" :route_name1="route_name1" :route_name2="route_name2"></DisplayTracks>

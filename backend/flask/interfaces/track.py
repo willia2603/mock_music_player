@@ -47,27 +47,9 @@ def get_match(word : str, session : Session) -> List[TrackSchemaFull]:
     :type session: Session
     :return: A list of TrackSchemaFull objects
     """
-    res = session.query(Track).filter(or_(Track.name.like(f'%{word}%'), Track.file.like(f'%{word}%')))
+    res = session.query(Track).filter(or_(Track.name.like(f'%{word}%')))
     tracks = [TrackSchemaFull.from_orm(x) for x in res]
     return tracks
         
-
-# for future reference
-# print(ArtistSchema(
-#     name=2
-# ))
-
-# o = {
-#     'name': 'casa',
-#     'test': 2
-# }
-# can check futur user input by passing dict of client to schema
-# print(ArtistSchema(**o))
-# above comes from:
-# def sum(*param1, **param2):
-#     print(param1, param2)
-    
-# sum(*[1,2,3], **{'ciao': 'casa', 'cavolo': 'arancione'})
-# sum(1,2,3, ciao='casa', cavolo='arancione')
     
     

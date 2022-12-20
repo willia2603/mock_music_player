@@ -41,6 +41,7 @@ function set_track_list(list) {
 function loadTrack(track) {
     console.log('track loaded')
     clearInterval(updateTimer);
+    // OK
     restSlider()
 
     curr_track.src = track.file
@@ -165,7 +166,7 @@ function playNext() {
         let curr_idx = track_list.findIndex(track => track.id == curr_track.id)
         loadTrack(track_list[curr_idx + 1])
     }
-    playTrack();
+    // playTrack();
 }
 
 /**
@@ -182,5 +183,5 @@ function playPrevious() {
         let curr_idx = track_list.findIndex(track => track.id == curr_track.id)
         loadTrack(track_list[curr_idx - 1])
     }
-    playTrack();
+    // playTrack();
 }

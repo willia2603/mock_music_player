@@ -1,5 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { useStore } from 'vuex'
+const store = useStore()
+
 const props = defineProps({
   tracks: {
     required: true
@@ -15,23 +18,30 @@ const props = defineProps({
   }
 })
 
+function loadTrack(track) {
+  // TODO resetSlider()
+  // store.commit('clearUpdateTimer')
+  store.commit('loadTrack', track)
+}
+function setTrackList() {
+  store.commit('setTrackList', props.tracks)
+  console.log('track list setted')
+}
+
 </script>
 <template>
     <h2>{{name}}</h2>
-    <!-- TODO: fix error -->
-    <div class="tracks" >
+    <!-- TODO: 1. load track 2. load track list 3. play track 4. set ended-->
+    <div class="tracks" @mouseover.once="setTrackList">
         <div class="track" v-for="track in tracks">
-            <span><u>Track Name:</u><br><br><a >{{track.name}}</a></span>
+
+            <span><u>Track Name:</u><br><br><a @click="loadTrack(track)">{{track.name}}</a></span>
             <span><u>Album Name:</u> <br><br>
               <RouterLink :to="{name: route_name1, params: {id : track.album_id}}">{{track.album.name}} </RouterLink>
             </span>
             <span><u>Artist:</u><br><br>
               <span v-for="artist in track.artists">
                 <RouterLink  :to="{name: route_name2, params: {id : artist.id} }">{{artist.name}}<br></RouterLink>
-                <!-- {{artist.id}}
-                
-                {{route_name2 + '/' + artist.id}} -->
-                <!-- <RouterLink  :to="{path: '/artists' + '/' + 2 }">{{artist.name}}<br></RouterLink> -->
               </span>
             </span>
             <span><u>Duration:</u><br><br>{{track.duration}}</span>

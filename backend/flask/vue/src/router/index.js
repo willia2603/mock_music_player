@@ -45,8 +45,9 @@ const router = createRouter({
                 import ('../views/TracksView.vue')
         },
         {
-            path: '/search',
+            path: '/search/:query',
             name: 'search',
+            props: true,
             component: () =>
                 import ('../views/SearchView.vue')
         },

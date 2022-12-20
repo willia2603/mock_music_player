@@ -17,7 +17,6 @@ async function getData(){
     name.value = res.data.title
 }
 getData()
-console.log("tracks list")
 </script>
 
 <template>
