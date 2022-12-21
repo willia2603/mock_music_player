@@ -19,8 +19,6 @@ const props = defineProps({
 })
 
 function loadTrack(track) {
-  // TODO resetSlider()
-  // store.commit('clearUpdateTimer')
   store.commit('loadTrack', track)
 }
 function setTrackList() {
@@ -31,16 +29,15 @@ function setTrackList() {
 </script>
 <template>
     <h2>{{name}}</h2>
-    <!-- TODO: 1. load track 2. load track list 3. play track 4. set ended-->
     <div class="tracks" @mouseover.once="setTrackList">
-        <div class="track" v-for="track in tracks">
+        <div class="track" v-for="track in tracks" :key="track.id">
 
             <span><u>Track Name:</u><br><br><a @click="loadTrack(track)">{{track.name}}</a></span>
             <span><u>Album Name:</u> <br><br>
               <RouterLink :to="{name: route_name1, params: {id : track.album_id}}">{{track.album.name}} </RouterLink>
             </span>
             <span><u>Artist:</u><br><br>
-              <span v-for="artist in track.artists">
+              <span v-for="artist in track.artists" :key="artist.id">
                 <RouterLink  :to="{name: route_name2, params: {id : artist.id} }">{{artist.name}}<br></RouterLink>
               </span>
             </span>

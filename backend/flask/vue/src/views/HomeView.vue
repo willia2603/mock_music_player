@@ -31,7 +31,6 @@ getData()
 </script>
 
 <template>
-    <!-- TODO: 1. display albums 2. display artists -->
     <DisplayArtistAlbum :list="albums" :name="name1" class1="albums-disp" class2="details" propriety="img_cover" :route_name="route_name1"></DisplayArtistAlbum>
     <DisplayArtistAlbum :list="artists" :name="name2" class1="artists-disp" class2="details" propriety="artist_img" :route_name="route_name2" ></DisplayArtistAlbum>
 </template>

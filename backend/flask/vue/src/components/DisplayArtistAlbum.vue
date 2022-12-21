@@ -25,7 +25,7 @@ const props = defineProps({
     <section :class="class1">
         <h2>{{name}}</h2>
         <div :class="class2">
-            <span v-for="el in list">
+            <span v-for="el in list" :key="el.id">
                 <RouterLink :to="{name: route_name, params: {id : el.id} }"><img :src="el[propriety]" alt="cover"></RouterLink>
             </span>
         </div>

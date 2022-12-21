@@ -30,21 +30,17 @@ async function getData() {
 }
 
 getData()
-// function is_empty() {
-//     return (tracks.length == 0) && (albums.length == 0) && (artists.length == 0)
-// }
+
 </script>
 
 <template>
 <h1>{{title}}</h1>
 
 <!-- TODO: see how to render based on whether lists ar present or not -->
-<!-- <div v-if="!is_empty()"> -->
 <DisplayTracks name="Tracks" :tracks="tracks" :route_name1="route_name1" :route_name2="route_name2"></DisplayTracks>
 <DisplayArtistAlbum :list="albums" name="Albums" class1="albums-disp" class2="details" propriety="img_cover" :route_name="route_name1" ></DisplayArtistAlbum>
 <DisplayArtistAlbum :list="artists" name="Aritsts" class1="artists-disp" class2="details" propriety="artist_img" :route_name="route_name2"  ></DisplayArtistAlbum>
 
-<!-- <div v-else>No result found</div> -->
 
 </template>
 
