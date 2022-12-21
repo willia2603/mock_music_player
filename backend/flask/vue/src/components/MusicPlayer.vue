@@ -94,7 +94,23 @@ initSlider()
 </template>
 
 <style scoped>
+.music-player {
+    background-color: #38006b;
+    color: antiquewhite;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
+.music-player img {
+    object-fit: cover;
+    object-position: center center;
+    width: auto;
+    height: 10%;
+    max-width: 20%;
+    /* max-height: 20%; */
+    padding: 1.5em;
+}
 
 
 </style>

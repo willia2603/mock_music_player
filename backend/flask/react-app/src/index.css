@@ -22,12 +22,20 @@ a:hover {
 
 a:link {
     text-decoration: none;
-    font-weight: bold;
+    /* font-weight: bold; */
+}
+h1 {
+    font-weight: normal;
 }
 
+h2 {
+    font-weight: normal;
+}
 a:visited,
 a {
     color: black;
+    /* text-decoration: none; */
+    
 }
 
 /* TODO fix player size when screen very big */
