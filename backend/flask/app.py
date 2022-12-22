@@ -19,7 +19,7 @@ app = Flask(__name__, template_folder='templates/jinja2')
 
 # To avoid CORS error
 # origins -> define which pages can make request (make it safe)
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["http://localhost:5173", "http://localhost:3000"])
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 # ** You can add variable sections to a URL by marking sections with <variable_name>.

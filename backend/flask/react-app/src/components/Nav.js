@@ -1,9 +1,12 @@
 // import {NavLink} from 'react-router-dom'
-import './Nav.css';
+import '../css/Nav.css';
 import {NavLink} from 'react-router-dom'
 
 // TODO implement form
 function Nav() {
+    function gotoResult(){
+        // router.push({name: 'search', params: {query : input_value.value} })
+      }
     return ( 
     <nav>
     <h2>Menu</h2>
@@ -14,11 +17,9 @@ function Nav() {
         <li><NavLink to="tracks">Tracks</NavLink></li>
         <li><NavLink to="search">Search</NavLink></li>
     </ul>
-            {/* <form>
-            <input type="search" name="q" placeholder="Search ..." v-model="input_value">
-            <input type="submit" value="Go!">
-        </form> */}
-    <form>
+    {/* TODO prevnt page from reloading */}
+    <form onSubmit={gotoResult}>
+        {/* TODO: get value */}
         <input type="search" name="q" placeholder="Search ..." />
         <input type="submit" value="Go!" />
     </form>
