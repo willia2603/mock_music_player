@@ -32,14 +32,13 @@ const props = defineProps({
     </section>
 </template>
 
-<style scoped>
+<style>
 .details {
     display: flex;
 }
 
 .details a {
-    min-width: 33%;
-    min-width: 33%;
+    min-width: 33%; 
 }
 
 .albums-disp img {
@@ -69,4 +68,5 @@ const props = defineProps({
     border-radius: 50%;
     padding: 1.0em;
 }
+
 </style>

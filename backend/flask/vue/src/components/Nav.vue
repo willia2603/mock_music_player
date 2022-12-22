@@ -29,7 +29,7 @@ function gotoResult(){
     
 </template>
 
-<style scoped>
+<style>
 nav {
     background-color: #6a1b9a;
     padding: 1.5em;

@@ -93,7 +93,7 @@ initSlider()
     
 </template>
 
-<style scoped>
+<style>
 .music-player {
     background-color: #38006b;
     color: antiquewhite;

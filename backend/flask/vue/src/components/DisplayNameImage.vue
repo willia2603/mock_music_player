@@ -25,7 +25,7 @@ const props = defineProps({
 
 </template>
 
-<style scoped>
+<style>
 .albums-disp img {
     object-fit: cover;
     object-position: center center;

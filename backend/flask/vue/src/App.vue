@@ -23,7 +23,7 @@ import MusicPlayer from './components/MusicPlayer.vue'
 
 </template>
 
-<style scoped>
+<style>
 header {
     padding: 0;
     background-color: #38006b;

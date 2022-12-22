@@ -48,7 +48,7 @@ function setTrackList() {
     
 </template>
 
-<style scoped>
+<style>
 .track {
     display: flex;
     justify-content: space-around;
