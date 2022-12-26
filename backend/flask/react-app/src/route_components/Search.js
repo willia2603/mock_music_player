@@ -10,7 +10,6 @@ function Search() {
   const [tracks, setTracks] = useState(null);
   const [albums, setAlbums] = useState(null);
   const [artists, setArtists] = useState(null);
-  //   const [match, setMatch] = useState(false);
   const [error, setError] = useState("");
   const [name, setName] = useState({});
 

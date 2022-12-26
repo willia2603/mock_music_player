@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import "../css/Nav.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
 function Nav() {
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
     navigate("/search");
   };
   return (
