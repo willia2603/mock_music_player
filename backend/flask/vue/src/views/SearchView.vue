@@ -3,9 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import fetchData from '../utils.js'
 import DisplayArtistAlbum from '../components/DisplayArtistAlbum.vue';
 import DisplayTracks from '../components/DisplayTracks.vue';
-
-import {onBeforeMount, ref} from 'vue'
-import axios from 'axios';
+import {ref} from 'vue'
 
 const tracks = ref([])
 const albums = ref([])

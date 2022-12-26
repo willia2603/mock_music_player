@@ -1,30 +1,36 @@
-// import {NavLink} from 'react-router-dom'
-import '../css/Nav.css';
-import {NavLink} from 'react-router-dom'
+/* eslint-disable no-unused-vars */
+import "../css/Nav.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
-// TODO implement form
 function Nav() {
-    function gotoResult(){
-        // router.push({name: 'search', params: {query : input_value.value} })
-      }
-    return ( 
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    navigate("/search");
+  };
+  return (
     <nav>
-    <h2>Menu</h2>
-    <ul>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="albums">Albums</NavLink></li>
-        <li><NavLink to="artists">Artists</NavLink></li>
-        <li><NavLink to="tracks">Tracks</NavLink></li>
-        <li><NavLink to="search">Search</NavLink></li>
-    </ul>
-    {/* TODO prevnt page from reloading */}
-    <form onSubmit={gotoResult}>
-        {/* TODO: get value */}
+      <h2>Menu</h2>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="albums">Albums</NavLink>
+        </li>
+        <li>
+          <NavLink to="artists">Artists</NavLink>
+        </li>
+        <li>
+          <NavLink to="tracks">Tracks</NavLink>
+        </li>
+      </ul>
+      <form onSubmit={handleSubmit}>
         <input type="search" name="q" placeholder="Search ..." />
         <input type="submit" value="Go!" />
-    </form>
-    </nav> 
-     );
+      </form>
+    </nav>
+  );
 }
 
 export default Nav;
