@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DispalyTracks from "../components/DisplayTracks";
-function Track() {
+
+const Track = () => {
   const [tracks, setTracks] = useState(null);
   const [name, setName] = useState("gghfhjgjh");
   const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ function Track() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/tracks");
+        const response = await axios.get("/api/v1/tracks");
         setTracks(response.data.tracks);
         setName(response.data["title"]);
         setLoading(false);
@@ -25,11 +26,11 @@ function Track() {
     return error;
   }
 
-  return (
-    <>
-      {!loading && <DispalyTracks name={name} tracks={tracks}></DispalyTracks>}
-    </>
-  );
-}
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  return <DispalyTracks name={name} tracks={tracks}></DispalyTracks>;
+};
 
 export default Track;

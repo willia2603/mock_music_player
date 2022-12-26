@@ -5,7 +5,7 @@ import DisplayTracks from "../../components/DisplayTracks";
 import DisplayNameImage from "../../components/DisplayNameImage";
 import DisplayArtistAlbum from "../../components/DisplayArtistAlbum";
 
-function ArtistInfo() {
+const ArtistInfo = () => {
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbum] = useState([]);
   const [artistName, setName] = useState("");
@@ -17,9 +17,7 @@ function ArtistInfo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/artists/${id}`
-        );
+        const response = await axios.get(`/api/v1/artists/${id}`);
 
         setTracks(response.data.tracks);
         setAlbum(response.data.albums);
@@ -37,29 +35,28 @@ function ArtistInfo() {
     return <p>{error}</p>;
   }
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
-      {" "}
-      {!loading && (
-        <>
-          <DisplayNameImage
-            path={artistImg}
-            name={artistName}
-            class1="artists-disp"
-          />
-          <DisplayTracks name="Tracks" tracks={tracks} />
-          <DisplayArtistAlbum
-            list={albums}
-            name="Albums"
-            class1="albums-disp"
-            class2=""
-            propriety="img_cover"
-            route_name="albums"
-          />
-        </>
-      )}
+      <DisplayNameImage
+        path={artistImg}
+        name={artistName}
+        class1="artists-disp"
+      />
+      <DisplayTracks name="Tracks" tracks={tracks} />
+      <DisplayArtistAlbum
+        list={albums}
+        name="Albums"
+        class1="albums-disp"
+        class2=""
+        propriety="img_cover"
+        route_name="albums"
+      />
     </>
   );
-}
+};
 
 export default ArtistInfo;

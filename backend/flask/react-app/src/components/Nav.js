@@ -1,12 +1,13 @@
 import "../css/Nav.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Nav() {
+const Nav = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
     navigate("/search");
   };
+
   return (
     <nav>
       <h2>Menu</h2>
@@ -30,6 +31,6 @@ function Nav() {
       </form>
     </nav>
   );
-}
+};
 
 export default Nav;
