@@ -6,16 +6,14 @@ import useFetch from "../hooks/useFetch";
 
 const Search = () => {
   const { query } = useParams();
-  const [tracks, setTracks] = useState(null);
-  const [albums, setAlbums] = useState(null);
-  const [artists, setArtists] = useState(null);
+  const [tracks, setTracks] = useState([]);
+  const [albums, setAlbums] = useState([]);
+  const [artists, setArtists] = useState([]);
   const [name, setName] = useState({});
-  // TODO useFetch
 
   const url = `/api/v1/search?q=${query}`;
-  // console.log(searchParams.get("q"));
+
   const { data, loading, error } = useFetch(url);
-  console.log(data);
 
   useEffect(() => {
     if (data) {

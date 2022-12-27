@@ -1,12 +1,13 @@
 import "../css/Nav.css";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState("");
 
-  const handleSubmit = (event) => {
-    const query = event.target.q.value;
-    navigate(`/search/${query}`);
+  const handleSearch = () => {
+    navigate(`/search/${searchValue}`);
   };
 
   return (
@@ -26,8 +27,12 @@ const Nav = () => {
           <NavLink to="tracks">Tracks</NavLink>
         </li>
       </ul>
-      <form onSubmit={handleSubmit}>
-        <input type="search" name="q" placeholder="Search ..." />
+      <form onSubmit={handleSearch}>
+        <input
+          placeholder="Search ..."
+          type="search"
+          onChange={(event) => setSearchValue(event.target.value)}
+        />
         <input type="submit" value="Go!" />
       </form>
     </nav>
