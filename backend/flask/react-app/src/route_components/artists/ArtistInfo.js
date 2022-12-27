@@ -1,38 +1,34 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import DisplayTracks from "../../components/DisplayTracks";
 import DisplayNameImage from "../../components/DisplayNameImage";
 import DisplayArtistAlbum from "../../components/DisplayArtistAlbum";
+import useFetch from "../../hooks/useFetch";
 
 const ArtistInfo = () => {
   const [tracks, setTracks] = useState([]);
   const [albums, setAlbum] = useState([]);
   const [artistName, setName] = useState("");
   const [artistImg, setImg] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const url = `/api/v1/artists/${id}`;
+  const { data, loading, error, empty } = useFetch(url);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/api/v1/artists/${id}`);
-
-        setTracks(response.data.tracks);
-        setAlbum(response.data.albums);
-        setName(response.data.title);
-        setImg(response.data.artist_img);
-        setLoading(false);
-      } catch (e) {
-        setError(e.message);
-      }
-    };
-    fetchData();
-  }, []);
+    if (data) {
+      setTracks(data.tracks);
+      setAlbum(data.albums);
+      setName(data.title);
+      setImg(data.artist_img);
+    }
+  }, [data]);
 
   if (error) {
     return <p>{error}</p>;
+  }
+
+  if (empty) {
+    return <Navigate to={"/404"} />;
   }
 
   if (loading) {
