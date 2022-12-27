@@ -7,7 +7,7 @@ import Search from "./route_components/Search";
 import MusicPlayer from "./components/MusicPlayer";
 import { ArtistRoutes, AlbumRoutes } from "./route_components/Routes";
 
-function App() {
+const App = () => {
   return (
     <>
       <header>
@@ -31,6 +31,6 @@ function App() {
       </footer>
     </>
   );
-}
+};
 
 export default App;

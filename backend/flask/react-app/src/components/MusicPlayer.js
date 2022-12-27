@@ -3,7 +3,7 @@ import "../css/MusicPlayer.css";
 import React, { useState } from "react";
 
 // TODO make music play and buttons work
-function MusicPlayer() {
+const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   // HELPERS
   function setupTrackInfos() {
@@ -86,6 +86,6 @@ function MusicPlayer() {
       </div>
     </div>
   );
-}
+};
 
 export default MusicPlayer;

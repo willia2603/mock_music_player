@@ -4,7 +4,7 @@ import DisplayNameImage from "../../components/DisplayNameImage";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-function AlbumTracks() {
+const AlbumTracks = () => {
   const [tracks, setTracks] = useState([]);
   const [album, setAlbum] = useState([]);
   const [error, setError] = useState(false);
@@ -14,9 +14,7 @@ function AlbumTracks() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/album_tracks/${id}`
-        );
+        const response = await axios.get(`/api/v1/album_tracks/${id}`);
 
         setTracks(response.data.tracks);
         setAlbum(response.data);
@@ -31,20 +29,21 @@ function AlbumTracks() {
   if (error) {
     return <p>{error}</p>;
   }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
-      {!loading && (
-        <>
-          <DisplayNameImage
-            path={album.album_cover}
-            name={album.album_name}
-            class1="albums-disp"
-          ></DisplayNameImage>
-          <DisplayTracks name="Tracks" tracks={tracks}></DisplayTracks>
-        </>
-      )}
+      <DisplayNameImage
+        path={album.album_cover}
+        name={album.album_name}
+        class1="albums-disp"
+      />
+      <DisplayTracks name="Tracks" tracks={tracks}></DisplayTracks>
     </>
   );
-}
+};
 
 export default AlbumTracks;

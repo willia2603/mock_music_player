@@ -4,7 +4,7 @@ import DisplayTracks from "../components/DisplayTracks";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 
-function Search() {
+const Search = () => {
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [tracks, setTracks] = useState(null);
@@ -15,10 +15,9 @@ function Search() {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log();
       try {
         let response = await axios.get(
-          `http://localhost:5000/api/v1/search?q=${searchParams.get("q")}`
+          `/api/v1/search?q=${searchParams.get("q")}`
         );
         setTracks(response.data.tracks);
         setAlbums(response.data.albums);
@@ -32,42 +31,43 @@ function Search() {
     fetchData();
   }, []);
 
-  function Empty() {
-    return artists.length === 0 && albums.length === 0 && tracks.length === 0;
-  }
+  const resultsAreEmpty =
+    artists.length === 0 && albums.length === 0 && tracks.length === 0;
 
   if (error) {
     return error;
   }
 
+  if (loading) {
+    return <p>Loading</p>;
+  }
+
+  if (resultsAreEmpty) {
+    return <>No match found</>;
+  }
+
   return (
     <>
-      {!loading && !Empty() ? (
-        <>
-          <h1>{name}</h1>
-          <DisplayTracks name="Tracks" tracks={tracks}></DisplayTracks>
-          <DisplayArtistAlbum
-            list={albums}
-            name="Albums"
-            class1="albums-disp"
-            class2="details"
-            propriety="img_cover"
-            route_name="albums"
-          ></DisplayArtistAlbum>
-          <DisplayArtistAlbum
-            list={artists}
-            name="Aritsts"
-            class1="artists-disp"
-            class2="details"
-            propriety="artist_img"
-            route_name="artists"
-          ></DisplayArtistAlbum>
-        </>
-      ) : (
-        "No match found"
-      )}
+      <h1>{name}</h1>
+      <DisplayTracks name="Tracks" tracks={tracks}></DisplayTracks>
+      <DisplayArtistAlbum
+        list={albums}
+        name="Albums"
+        class1="albums-disp"
+        class2="details"
+        propriety="img_cover"
+        route_name="albums"
+      />
+      <DisplayArtistAlbum
+        list={artists}
+        name="Aritsts"
+        class1="artists-disp"
+        class2="details"
+        propriety="artist_img"
+        route_name="artists"
+      />
     </>
   );
-}
+};
 
 export default Search;

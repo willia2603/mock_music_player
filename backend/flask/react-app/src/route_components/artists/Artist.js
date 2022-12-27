@@ -15,9 +15,7 @@ function Artist() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/v1/artists"
-        );
+        const response = await axios.get("/api/v1/artists");
 
         setArtists(response.data.artists);
         setName(response.data.title);
@@ -29,21 +27,25 @@ function Artist() {
 
     fetchData();
   }, []);
+
   if (error) {
     return <p>{error}</p>;
   }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
-      {!loading && (
-        <DisplayArtistAlbum
-          list={artists}
-          name={name}
-          class1={class1}
-          class2={class2}
-          propriety={propriety}
-          route_name="artists"
-        ></DisplayArtistAlbum>
-      )}
+      <DisplayArtistAlbum
+        list={artists}
+        name={name}
+        class1={class1}
+        class2={class2}
+        propriety={propriety}
+        route_name="artists"
+      />
     </div>
   );
 }

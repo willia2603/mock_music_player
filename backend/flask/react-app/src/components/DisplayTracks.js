@@ -1,20 +1,20 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import "../css/DisplayTracks.css";
 import { NavLink } from "react-router-dom";
 import React, { useRef, useEffect } from "react";
 
-function DisplayTracks({ tracks, name }) {
+const DisplayTracks = ({ tracks, name }) => {
   const loadTracks = useRef();
 
-  function loadTrack(track) {
+  const loadTrack = (track) => {
     // store.commit('loadTrack', track)
     console.log("track loaded");
-  }
-  function setTrackList() {
+  };
+
+  const setTrackList = () => {
     // store.commit('setTrackList', props.tracks)
     console.log("track list setted");
-  }
+  };
 
   useEffect(() => {
     // useEffect instead of onMouseOver to have event fire only once
@@ -69,6 +69,6 @@ function DisplayTracks({ tracks, name }) {
       </div>
     </>
   );
-}
+};
 
 export default DisplayTracks;
