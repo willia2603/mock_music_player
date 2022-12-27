@@ -4,8 +4,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 const Nav = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    navigate("/search");
+  const handleSubmit = (event) => {
+    const query = event.target.q.value;
+    navigate(`/search/${query}`);
   };
 
   return (

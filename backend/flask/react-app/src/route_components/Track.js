@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DispalyTracks from "../components/DisplayTracks";
+import DisplayTracks from "../components/DisplayTracks";
 
 const Track = () => {
   const [tracks, setTracks] = useState(null);
@@ -30,7 +30,7 @@ const Track = () => {
     return <p>Loading...</p>;
   }
 
-  return <DispalyTracks name={name} tracks={tracks}></DispalyTracks>;
+  return <DisplayTracks name={name} tracks={tracks} />;
 };
 
 export default Track;

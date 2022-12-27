@@ -21,7 +21,7 @@ const App = () => {
             <Route path="albums/*" element={<AlbumRoutes />} />
             <Route path="artists/*" element={<ArtistRoutes />} />
             <Route path="tracks" element={<Track />} />
-            <Route path="search" element={<Search />} />
+            <Route path="search/:query" element={<Search />} />
             <Route path="*" element={<h1>Page not Found</h1>} />
           </Routes>
         </main>

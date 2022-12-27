@@ -1,38 +1,38 @@
 import { useState, useEffect } from "react";
 import DisplayArtistAlbum from "../components/DisplayArtistAlbum";
 import DisplayTracks from "../components/DisplayTracks";
-import axios from "axios";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 const Search = () => {
-  const [searchParams] = useSearchParams();
-  const [loading, setLoading] = useState(true);
+  const { query } = useParams();
   const [tracks, setTracks] = useState(null);
   const [albums, setAlbums] = useState(null);
   const [artists, setArtists] = useState(null);
-  const [error, setError] = useState("");
   const [name, setName] = useState({});
+  // TODO useFetch
+
+  const url = `/api/v1/search?q=${query}`;
+  // console.log(searchParams.get("q"));
+  const { data, loading, error } = useFetch(url);
+  console.log(data);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let response = await axios.get(
-          `/api/v1/search?q=${searchParams.get("q")}`
-        );
-        setTracks(response.data.tracks);
-        setAlbums(response.data.albums);
-        setArtists(response.data.artists);
-        setName(response.data.title);
-        setLoading(false);
-      } catch (e) {
-        setError(e);
-      }
-    };
-    fetchData();
-  }, []);
+    if (data) {
+      setTracks(data.tracks);
+      setAlbums(data.albums);
+      setArtists(data.artists);
+      setName(data.title);
+    }
+  }, [data]);
 
-  const resultsAreEmpty =
-    artists.length === 0 && albums.length === 0 && tracks.length === 0;
+  const resultsAreEmpty = () =>
+    artists &&
+    albums &&
+    tracks &&
+    artists.length === 0 &&
+    albums.length === 0 &&
+    tracks.length === 0;
 
   if (error) {
     return error;
@@ -42,7 +42,7 @@ const Search = () => {
     return <p>Loading</p>;
   }
 
-  if (resultsAreEmpty) {
+  if (resultsAreEmpty()) {
     return <>No match found</>;
   }
 
