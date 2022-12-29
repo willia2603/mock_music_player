@@ -27,7 +27,7 @@ const store = createStore({
             }
 
             // reset slider 
-            clearInterval(state.updateTimer);
+            clearInterval(state.updateInterval);
             this.commit('resetSlider')
 
             // get track info
@@ -49,7 +49,7 @@ const store = createStore({
 
             // Set an interval of 1000 milliseconds
             // for updating the seek slider
-            state.updateTimer = setInterval(function() {
+            state.updateInterval = setInterval(function() {
                 this.commit('seekUpdate')
             }.bind(this), 1000);
 
@@ -82,6 +82,7 @@ const store = createStore({
         },
         initSlider(state, slider) {
             state.playerSlider = slider
+            console.log(state.playerSlider)
         },
         // setSlider
         setSlider(state) {
@@ -94,13 +95,15 @@ const store = createStore({
             state.curr_track.currentTime = seekto;
         },
         resetSlider(state) {
-            state.playerSlider = 0
+            console.log(state.playerSlider.value, 'sliderrrrrr')
+            state.playerSlider.value = 0
         },
         seekUpdate(state) {
             let seekPosition = 0;
 
             if (!isNaN(state.curr_track.duration)) {
                 seekPosition = state.curr_track.currentTime * (100 / state.curr_track.duration);
+                console.log(seekPosition)
                 state.playerSlider.value = seekPosition;
 
             }
@@ -144,9 +147,6 @@ const store = createStore({
             }
         },
 
-        clearUpdateTimer(state) {
-            clearInterval(state.updateTimer);
-        }
     },
     getters: {
         getIsPlaying(state) {

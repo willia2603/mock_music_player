@@ -33,9 +33,6 @@ function setupTrackInfos(){
     } 
 }
 
-function restSlider() {
-    track_slider.value = 0
-}
 
 // ACTUAL PLAYER MODIFIERS
 function play() {
@@ -46,8 +43,6 @@ function pause() {
     store.commit('pauseTrack')
 }
 function playNext() {
-    restSlider()
-    store.commit('clearUpdateTimer')
     store.commit('playNext')
 }
 function playPrevious() {
@@ -65,6 +60,7 @@ function setSlider(){
     store.commit('setSlider')
 }
 initSlider()
+console.log('rendering again')
 </script>
 
 <template>
