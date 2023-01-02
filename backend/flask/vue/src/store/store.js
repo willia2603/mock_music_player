@@ -32,7 +32,6 @@ const store = createStore({
 
             // get track info
             state.curr_track = new Audio()
-            console.log(state.curr_track.preload)
             state.curr_track.id = track.id
             state.curr_track.src = track.file
             state.curr_track.name = track.name
@@ -82,7 +81,6 @@ const store = createStore({
         },
         initSlider(state, slider) {
             state.playerSlider = slider
-            console.log(state.playerSlider)
         },
         // setSlider
         setSlider(state) {
@@ -95,7 +93,6 @@ const store = createStore({
             state.curr_track.currentTime = seekto;
         },
         resetSlider(state) {
-            console.log(state.playerSlider.value, 'sliderrrrrr')
             state.playerSlider.value = 0
         },
         seekUpdate(state) {
@@ -103,7 +100,6 @@ const store = createStore({
 
             if (!isNaN(state.curr_track.duration)) {
                 seekPosition = state.curr_track.currentTime * (100 / state.curr_track.duration);
-                console.log(seekPosition)
                 state.playerSlider.value = seekPosition;
 
             }
@@ -122,12 +118,10 @@ const store = createStore({
             if (state.track_list[state.track_list.length - 1]['id'] == state.curr_track.id) {
                 console.log('last track, go to first')
                 this.commit('loadTrack', state.track_list[0])
-                this.commit('playTrack')
             } else {
                 console.log('go to next track')
                 let curr_idx = state.track_list.findIndex(track => track.id == state.curr_track.id)
                 this.commit('loadTrack', state.track_list[curr_idx + 1])
-                this.commit('playTrack')
             }
         },
 

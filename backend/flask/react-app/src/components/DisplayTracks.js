@@ -1,18 +1,22 @@
 /* eslint-disable no-unused-vars */
+
 import "../css/DisplayTracks.css";
 import { NavLink } from "react-router-dom";
 import React, { useRef, useEffect } from "react";
+import { useMusicPlayerContext } from "../contexts/MusicPlayerContext";
 
 const DisplayTracks = ({ tracks, name }) => {
   const loadTracks = useRef();
 
-  const loadTrack = (track) => {
-    // store.commit('loadTrack', track)
-    console.log("track loaded");
+  const { loadTrack, loadTrackList } = useMusicPlayerContext();
+
+  const setTrack = (track) => {
+    loadTrack(track);
+    console.log("track set");
   };
 
   const setTrackList = () => {
-    // store.commit('setTrackList', props.tracks)
+    loadTrackList(tracks);
     console.log("track list setted");
   };
 
@@ -36,7 +40,7 @@ const DisplayTracks = ({ tracks, name }) => {
                 <u>Track Name:</u>
                 <br />
                 <br />
-                <a onClick={() => loadTrack(track)}>{track.name}</a>
+                <a onClick={() => setTrack(track)}>{track.name}</a>
               </span>
               <span>
                 <u>Album Name:</u> <br /> <br />

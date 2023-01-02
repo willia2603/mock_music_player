@@ -1,10 +1,24 @@
 /* eslint-disable no-unused-vars */
 import "../css/MusicPlayer.css";
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
+import { useMusicPlayerContext } from "../contexts/MusicPlayerContext";
 
-// TODO make music play and buttons work
 const MusicPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(false);
+  const playerVolume = useRef();
+  const PlayerSlider = useRef();
+
+  const {
+    createSlider,
+    pauseTrack,
+    playTrack,
+    setVolume,
+    setSlider,
+    playNext,
+    playPrevious,
+    description,
+    isPlaying,
+  } = useMusicPlayerContext();
   // HELPERS
   function setupTrackInfos() {
     // if (curr_track != null) {
@@ -15,73 +29,74 @@ const MusicPlayer = () => {
     // }
   }
 
-  function restSlider() {
-    // track_slider.value = 0
-  }
-
   // ACTUAL PLAYER MODIFIERS
   function play() {
-    // store.commit('playTrack')
+    playTrack();
   }
 
   function pause() {
-    // store.commit('pauseTrack')
+    pauseTrack();
   }
-  function playNext() {
-    // restSlider()
-    // store.commit('clearUpdateTimer')
-    // store.commit('playNext')
+  function next() {
+    playNext();
   }
-  function playPrevious() {
-    // store.commit('playPrevious')
+  function previous() {
+    playPrevious();
   }
 
-  function setVolume() {
-    // store.commit('setVolume', playerVolume.value.value / 100)
+  function changeVolume() {
+    setVolume(playerVolume.current.value / 100);
   }
 
-  function initSlider() {
-    // store.commit('initSlider',playerSlider)
+  function changeSlider() {
+    setSlider();
   }
-  function setSlider() {
-    // store.commit('setSlider')
-  }
-  initSlider();
+
+  useEffect(() => {
+    createSlider(PlayerSlider);
+  }, []);
+
+  useEffect(() => {
+    console.log("isPlaying changed", isPlaying);
+  }, [isPlaying]);
 
   return (
     <div className="music-player">
       <div>
-        <button onClick={playPrevious}>Previous</button>
-        {isPlaying ? (
+        <button onClick={previous}>Previous</button>
+        {/* {isPlaying ? (
           <button onClick={pause}>Play</button>
         ) : (
           <button onClick={play}>Next</button>
-        )}
-        <button onClick={playNext}>Next</button>
+        )} */}
+        <button onClick={next}>Next</button>
       </div>
       <img src="/static/images/album_placeholder.jpeg" alt="album cover" />
       <div>
-        <span>No song is playing</span>
-        <br />
+        <span>{description}</span>
+        {/* <br />
         <span></span>
         <br />
-        <span></span>
+        <span></span> */}
+        <br />
         <input
+          ref={PlayerSlider}
           type="range"
           min="1"
           max="100"
           defaultValue="0"
-          onInput={setSlider}
+          onInput={changeSlider}
         />
       </div>
       <div>
         <span>Volume</span>
         <input
+          ref={playerVolume}
           type="range"
           min="1"
           max="100"
           defaultValue="30"
-          onChange={setVolume}
+          onChange={changeVolume}
         />
       </div>
     </div>
