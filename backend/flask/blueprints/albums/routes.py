@@ -40,7 +40,7 @@ def goto_id(id: int):
         album_cover = tracks[0].album.img_cover
         
         context = {
-            'title': f'Album {id}',
+            'title': album_name,
             'album_name': album_name,
             'album_cover':album_cover,
             'tracks': [track.dict() for track in tracks]
