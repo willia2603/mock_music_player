@@ -1,18 +1,30 @@
 /* eslint-disable no-const-assign */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useInterval } from "../hooks/useInterval";
 // TODO fiix slider and volume
 const Context = createContext();
 
 export const MusicPlayerContext = ({ children }) => {
   // VARS -> fix
-  let [currTrack, setCurrTrack] = useState(null);
-  let [trackList, setTrackList] = useState(null);
-  let [isPlaying, setIsPlaying] = useState(false);
-  let [updateInterval] = useState(null);
-  let [playerSlider, setPlayerSlider] = useState(null);
-  let [description] = useState("No song is playing");
+  const [currTrack, setCurrTrack] = useState(null);
+  const [trackList, setTrackList] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [updateInterval] = useState(null);
+  const [playerSlider, setPlayerSlider] = useState(null);
+  const [description, setDescription] = useState("No song is playing");
   //   const [trackList, setTrackList] = useState([])
   // const [currTrack, setCurrTrack] = useState(null)
+  useInterval(
+    () => {
+      let seekPosition = 0;
+
+      if (!isNaN(currTrack.duration)) {
+        seekPosition = currTrack.currentTime * (100 / currTrack.duration);
+        playerSlider.current.value = seekPosition;
+      }
+    },
+    isPlaying ? 1000 : null
+  );
 
   // FUNCTIONS
   const loadTrack = (track) => {
@@ -24,72 +36,52 @@ export const MusicPlayerContext = ({ children }) => {
     resetSlider();
 
     // get track info
-    // setCurrTrack(new Audio());
-    currTrack = new Audio();
-    currTrack.id = track.id;
-    currTrack.src = track.file;
-    currTrack.name = track.name;
-    currTrack.artists = track.artists;
-    currTrack.album_name = track.album.name;
-    currTrack.album_cover = track.album.img_cover;
+    const newCurrTrack = new Audio();
+    newCurrTrack.id = track.id;
+    newCurrTrack.src = track.file;
+    newCurrTrack.name = track.name;
+    newCurrTrack.artists = track.artists;
+    newCurrTrack.album_name = track.album.name;
+    newCurrTrack.album_cover = track.album.img_cover;
 
     // load track
     try {
-      currTrack.load();
+      newCurrTrack.load();
     } catch {
       alert("This is a dummy file, please choose another one");
     }
-    // setDescription();
-    // console.log(description);
-    // Set an interval of 1000 milliseconds
-    // for updating the seek slider
-    updateInterval = setInterval(seekUpdate, 1000);
 
     // Play track
-    playTrack();
+    playTrack(newCurrTrack);
 
     // make next track play when current track ends
-    currTrack.addEventListener("ended", function () {
-      pauseTrack();
+    newCurrTrack.addEventListener("ended", () => {
+      pauseCurrentTrack();
       playNext();
     });
-  };
-  // not used yet
-  const setDescription = () => {
-    description = `
-    <u>Track Name:</u><br>${currTrack.name} <br>
-    <u>Album Name:</u><br>${currTrack.album_name}<br>
-    <u>Artist Name:</u><br>${currTrack.artists
-      .map((artist) => artist.name)
-      .join(", ")}
-    `;
-  };
-  const seekUpdate = () => {
-    let seekPosition = 0;
-
-    if (!isNaN(currTrack.duration)) {
-      seekPosition = currTrack.currentTime * (100 / currTrack.duration);
-      playerSlider.current.value = seekPosition;
-    }
+    setCurrTrack(newCurrTrack);
   };
 
-  const playTrack = () => {
+  const playTrack = (track) => {
+    track.play();
+    setIsPlaying(true);
+  };
+
+  const playCurrentTrack = () => {
     // play loaded track
     if (currTrack != null) {
-      currTrack.play();
-      //   setIsPlaying(true);
-      isPlaying = true;
+      playTrack(currTrack);
     } else {
       alert("Please select a track first");
     }
   };
 
-  const pauseTrack = () => {
+  const pauseCurrentTrack = () => {
     // Pause the loaded track
     currTrack.pause();
-    // setIsPlaying(false);
-    isPlaying = false;
+    setIsPlaying(false);
   };
+
   const setVolume = (value) => {
     // Set the volume
     currTrack.volume = value;
@@ -98,15 +90,14 @@ export const MusicPlayerContext = ({ children }) => {
     // Calculate the seek position by the
     // percentage of the seek slider
     // and get the relative duration to the track
-    let seekto = currTrack.duration * (playerSlider.current.value / 100);
+    const seekTo = currTrack.duration * (playerSlider.current.value / 100);
 
     // Set the current track position to the calculated seek position
-    currTrack.currentTime = seekto;
+    currTrack.currentTime = seekTo;
   };
 
   const loadTrackList = (tracks) => {
-    // setTrackList(tracks)
-    trackList = tracks;
+    setTrackList(tracks);
   };
 
   const resetSlider = () => {
@@ -115,8 +106,7 @@ export const MusicPlayerContext = ({ children }) => {
   };
 
   const createSlider = (slider) => {
-    // playerSlider(slider)
-    playerSlider = slider;
+    setPlayerSlider(slider);
     console.log("slider created");
   };
 
@@ -145,6 +135,15 @@ export const MusicPlayerContext = ({ children }) => {
       loadTrack(trackList[curr_idx - 1]);
     }
   };
+  useEffect(() => {
+    if (currTrack) {
+      setDescription(`
+	      ${currTrack.name} (${currTrack.album_name}) by ${currTrack.artists
+        .map((artist) => artist.name)
+        .join(", ")}
+	      `);
+    }
+  }, [currTrack]);
 
   return (
     <Context.Provider
@@ -152,8 +151,8 @@ export const MusicPlayerContext = ({ children }) => {
         loadTrack,
         loadTrackList,
         createSlider,
-        pauseTrack,
-        playTrack,
+        pauseCurrentTrack,
+        playCurrentTrack,
         setVolume,
         setSlider,
         playNext,

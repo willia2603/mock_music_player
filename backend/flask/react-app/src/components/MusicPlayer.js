@@ -10,8 +10,8 @@ const MusicPlayer = () => {
 
   const {
     createSlider,
-    pauseTrack,
-    playTrack,
+    pauseCurrentTrack,
+    playCurrentTrack,
     setVolume,
     setSlider,
     playNext,
@@ -30,13 +30,6 @@ const MusicPlayer = () => {
   }
 
   // ACTUAL PLAYER MODIFIERS
-  function play() {
-    playTrack();
-  }
-
-  function pause() {
-    pauseTrack();
-  }
   function next() {
     playNext();
   }
@@ -64,11 +57,11 @@ const MusicPlayer = () => {
     <div className="music-player">
       <div>
         <button onClick={previous}>Previous</button>
-        {/* {isPlaying ? (
-          <button onClick={pause}>Play</button>
+        {isPlaying ? (
+          <button onClick={pauseCurrentTrack}>Pause</button>
         ) : (
-          <button onClick={play}>Next</button>
-        )} */}
+          <button onClick={playCurrentTrack}>Play</button>
+        )}
         <button onClick={next}>Next</button>
       </div>
       <img src="/static/images/album_placeholder.jpeg" alt="album cover" />
