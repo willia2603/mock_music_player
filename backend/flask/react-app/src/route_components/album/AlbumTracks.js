@@ -14,7 +14,9 @@ const AlbumTracks = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/v1/album_tracks/${id}`);
+        const response = await axios.get(
+          `http://localhost:5000/api/v1/album_tracks/${id}`
+        );
 
         setTracks(response.data.tracks);
         setAlbum(response.data);

@@ -11,7 +11,7 @@ const Track = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/v1/tracks");
+        const response = await axios.get("http://localhost:5000/api/v1/tracks");
         setTracks(response.data.tracks);
         setName(response.data["title"]);
         setLoading(false);

@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/v1/hp");
+        const response = await axios.get("http://localhost:5000/api/v1/hp");
         setArtists(response.data.artists);
         setAlbums(response.data.albums);
         // console.log(response.data.albums)

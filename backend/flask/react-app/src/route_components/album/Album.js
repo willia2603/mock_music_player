@@ -15,7 +15,7 @@ const Album = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/v1/albums");
+        const response = await axios.get("http://localhost:5000/api/v1/albums");
 
         setAlbums(response.data.albums);
         setName(response.data.title);

@@ -15,7 +15,9 @@ function Artist() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/v1/artists");
+        const response = await axios.get(
+          "http://localhost:5000/api/v1/artists"
+        );
 
         setArtists(response.data.artists);
         setName(response.data.title);
