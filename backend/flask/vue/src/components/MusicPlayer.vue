@@ -33,9 +33,6 @@ function setupTrackInfos(){
     } 
 }
 
-function restSlider() {
-    track_slider.value = 0
-}
 
 // ACTUAL PLAYER MODIFIERS
 function play() {
@@ -46,8 +43,6 @@ function pause() {
     store.commit('pauseTrack')
 }
 function playNext() {
-    restSlider()
-    store.commit('clearUpdateTimer')
     store.commit('playNext')
 }
 function playPrevious() {
@@ -65,6 +60,7 @@ function setSlider(){
     store.commit('setSlider')
 }
 initSlider()
+console.log('rendering again')
 </script>
 
 <template>
@@ -93,8 +89,24 @@ initSlider()
     
 </template>
 
-<style scoped>
+<style>
+.music-player {
+    background-color: #38006b;
+    color: antiquewhite;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
+.music-player img {
+    object-fit: cover;
+    object-position: center center;
+    width: auto;
+    height: 10%;
+    max-width: 20%;
+    /* max-height: 20%; */
+    padding: 1.5em;
+}
 
 
 </style>

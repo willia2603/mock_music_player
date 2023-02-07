@@ -1,0 +1,9 @@
+.track {
+    display: flex;
+    justify-content: space-around;
+    border: solid #38006b;
+    padding: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+}

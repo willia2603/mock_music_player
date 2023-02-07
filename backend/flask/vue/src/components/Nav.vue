@@ -29,11 +29,10 @@ function gotoResult(){
     
 </template>
 
-<style scoped>
+<style>
 nav {
     background-color: #6a1b9a;
     padding: 1.5em;
-    /* padding-left: 2em; */
     width: 25%;
     text-align: center;
     min-height: 60vh;

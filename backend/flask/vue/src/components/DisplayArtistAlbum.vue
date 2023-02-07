@@ -25,21 +25,20 @@ const props = defineProps({
     <section :class="class1">
         <h2>{{name}}</h2>
         <div :class="class2">
-            <span v-for="el in list">
+            <span v-for="el in list" :key="el.id">
                 <RouterLink :to="{name: route_name, params: {id : el.id} }"><img :src="el[propriety]" alt="cover"></RouterLink>
             </span>
         </div>
     </section>
 </template>
 
-<style scoped>
+<style>
 .details {
     display: flex;
 }
 
 .details a {
-    min-width: 33%;
-    min-width: 33%;
+    min-width: 33%; 
 }
 
 .albums-disp img {
@@ -69,4 +68,5 @@ const props = defineProps({
     border-radius: 50%;
     padding: 1.0em;
 }
+
 </style>
