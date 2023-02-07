@@ -6,10 +6,11 @@ const DisplayArtistAlbum = ({
   name,
   class1,
   class2,
+  class3,
   propriety,
   route_name,
 }) => (
-  <section className={class1}>
+  <section className={`${class1} ${class3}`}>
     <h2>{name}</h2>
     <div className={class2}>
       <span>

@@ -43,7 +43,9 @@
             <button class='play-btn' onclick="playPause()">Play</button>
             <button class='next-btn' onclick="playNext()">Next</button>
         </div>
-        <img class='player-cover' src="/static/images/album_placeholder.jpeg" alt="album cover">
+        <div class="player-img">
+            <img class='player-cover' src="/static/images/music-placeholder.png" alt="album cover">
+        </div>
         <div>
             <span class="player-song-name"> No song is playing</span>
             <br>
@@ -53,7 +55,7 @@
             <br>
             <input class="player-slider" type="range" min="1" max="100" value="0" onchange="setSlider()">
         </div>
-        <div>
+        <div class="volume">
             <span>Volume</span>
             <input class="player-volume" type="range" min="1" max="100" value="30" onchange="setVolume()">
         </div>

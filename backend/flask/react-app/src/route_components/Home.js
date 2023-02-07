@@ -54,6 +54,7 @@ const Home = () => {
         name={name1}
         class1="albums-disp"
         class2="details"
+        class3="hp"
         propriety="img_cover"
         route_name="albums"
       />
@@ -62,6 +63,7 @@ const Home = () => {
         name={name2}
         class1="artists-disp"
         class2="details"
+        class3="hp"
         propriety="artist_img"
         route_name="artists"
       />

@@ -2,11 +2,6 @@
   display: flex;
 }
 
-.details a {
-  min-width: 33%;
-  min-width: 33%;
-}
-
 .albums-disp img {
   object-fit: cover;
   object-position: center center;
@@ -21,6 +16,10 @@
 .albums-disp,
 .artists-disp {
   overflow-x: scroll;
+}
+
+.hp {
+  white-space: nowrap;
 }
 
 .artists-disp img {

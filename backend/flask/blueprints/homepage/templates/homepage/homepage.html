@@ -1,3 +1,5 @@
 {% extends 'base.html' %} {% import 'macros/macros.html' as m%}{% block title %}
-<title>{{title}}</title>{% endblock %} {% block content%} {{m.display(l=albums, class1="albums-disp", class2="details", name=name1, propriety='img_cover', route='albums_page.goto_id')}} {{m.display(l=artists, class1="artists-disp", class2="details", name=name2,
+<title>{{title}}</title>{% endblock %} {% block content%} {{m.display(l=albums, class1="albums-disp", class2="details",
+class3='hp', name=name1, propriety='img_cover', route='albums_page.goto_id')}} {{m.display(l=artists,
+class1="artists-disp", class2="details", name=name2,
 propriety='artist_img', route='artists_page.goto_artist')}} {% endblock %}
