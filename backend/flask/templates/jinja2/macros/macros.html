@@ -1,10 +1,12 @@
-{% macro display(l=[], class1="", class2="", name="", propriety="", route="") -%}
-<section class={{class1}}>
+{% macro display(l=[], class1="", class2="", class3="", name="", propriety="", route="") -%}
+<section class="{{class1 + ' ' + class3}}"">
     <h2>{{name}}</h2>
     <div class={{class2}}>
-        {% for el in l %}
-        <a href="{{url_for(route, id=el.id)}}"><img src={{el[propriety]}} alt="cover"></a>
-        {% endfor %}
+        <div>{% for el in l %}
+            <a href=" {{url_for(route, id=el.id)}}"><img src={{el[propriety]}} alt="cover"></a>
+    {% endfor %}
+    </div>
+
     </div>
 </section>
 {%- endmacro %} {% macro display_tracks(l=[], name="") -%}
@@ -13,10 +15,11 @@
     {% for el in l%}
     <div class="track">
         <span><u>Track Name:</u><br><br><a onclick='loadTrack({{el}})'>{{el['name']}}</a></span>
-        <span><u>Album Name:</u> <br><br><a href="{{url_for('albums_page.goto_id', id=el.album_id)}}">{{el['album']['name']}}</a></span>
+        <span><u>Album Name:</u> <br><br><a
+                href="{{url_for('albums_page.goto_id', id=el.album_id)}}">{{el['album']['name']}}</a></span>
         <span><u>Artist:</u><br><br>
             {% for artist in el.artists %}
-                <a href="{{url_for('artists_page.goto_artist', id=artist.id)}}">{{artist.name}}</a><br>
+            <a href="{{url_for('artists_page.goto_artist', id=artist.id)}}">{{artist.name}}</a><br>
             {% endfor %}
         </span>
         <span><u>Duration:</u><br><br>{{el['duration']}}</span>

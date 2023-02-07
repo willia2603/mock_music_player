@@ -10,6 +10,9 @@ const props = defineProps({
     class2: {
         required: true
     },
+    class3: {
+        required: true
+    },
     name: {
         required: true
     },
@@ -22,12 +25,14 @@ const props = defineProps({
 })
 </script>
 <template>
-    <section :class="class1">
+    <section :class="[class1, class3]">
         <h2>{{name}}</h2>
         <div :class="class2">
-            <span v-for="el in list" :key="el.id">
-                <RouterLink :to="{name: route_name, params: {id : el.id} }"><img :src="el[propriety]" alt="cover"></RouterLink>
-            </span>
+            <div>
+                <span v-for="el in list" :key="el.id">
+                    <RouterLink :to="{name: route_name, params: {id : el.id} }"><img :src="el[propriety]" alt="cover"></RouterLink>
+                </span>
+            </div>
         </div>
     </section>
 </template>
@@ -55,6 +60,11 @@ const props = defineProps({
 .albums-disp,
 .artists-disp {
     overflow-x: scroll;
+    
+}
+
+.hp {
+    white-space: nowrap;
 }
 
 .artists-disp img {

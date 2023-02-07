@@ -12,8 +12,9 @@ export const MusicPlayerContext = ({ children }) => {
   const [updateInterval] = useState(null);
   const [playerSlider, setPlayerSlider] = useState(null);
   const [description, setDescription] = useState("No song is playing");
-  //   const [trackList, setTrackList] = useState([])
-  // const [currTrack, setCurrTrack] = useState(null)
+  const [playerImgSrc, setPlayerImgSrc] = useState(
+    "/static/images/music-placeholder.png"
+  );
   useInterval(
     () => {
       let seekPosition = 0;
@@ -35,6 +36,8 @@ export const MusicPlayerContext = ({ children }) => {
     clearInterval(updateInterval);
     resetSlider();
 
+    console.log(track);
+
     // get track info
     const newCurrTrack = new Audio();
     newCurrTrack.id = track.id;
@@ -43,6 +46,7 @@ export const MusicPlayerContext = ({ children }) => {
     newCurrTrack.artists = track.artists;
     newCurrTrack.album_name = track.album.name;
     newCurrTrack.album_cover = track.album.img_cover;
+    setPlayerImgSrc(track.album.img_cover);
 
     // load track
     try {
@@ -159,6 +163,7 @@ export const MusicPlayerContext = ({ children }) => {
         playPrevious,
         isPlaying,
         description,
+        playerImgSrc,
       }}
     >
       {children}
