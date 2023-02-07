@@ -71,17 +71,18 @@ console.log('rendering again')
             <button v-else class='play-btn' @click="play">Play</button>
             <button class='next-btn' @click="playNext">Next</button>
         </div>
-        <img ref='playerCover' src="/static/images/album_placeholder.jpeg" alt="album cover">
+        <div class="player-img">
+            <img ref='playerCover' src="/static/images/music-placeholder.png" alt="album cover">
+        </div>
         <div>
             <span ref="playerSongName"> No song is playing</span>
-            <br>
             <span ref="playerAlbum"></span>
             <br>
             <span ref="playerArtist"></span>
             <br>
             <input ref="playerSlider" type="range" min="1" max="100" value="0" @input="setSlider">
         </div>
-        <div>
+        <div class="volume">
             <span>Volume</span>
             <input ref="playerVolume" type="range" min="1" max="100" value="30" @change="setVolume">
         </div>
@@ -91,21 +92,33 @@ console.log('rendering again')
 
 <style>
 .music-player {
-    background-color: #38006b;
-    color: antiquewhite;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  background-color: #38006b;
+  color: antiquewhite;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-height: 13em;
+  min-height: 5em;
+  padding: 2em;
 }
 
-.music-player img {
-    object-fit: cover;
-    object-position: center center;
-    width: auto;
-    height: 10%;
-    max-width: 20%;
-    /* max-height: 20%; */
-    padding: 1.5em;
+.volume {
+  text-align: center;
+  margin-left: 2em;
+}
+
+.player-img img {
+  object-fit: cover;
+  object-position: center;
+  width: 20em;
+  height: auto;
+  aspect-ratio: 1;
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.player-img {
+  text-align: center;
 }
 
 

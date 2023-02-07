@@ -4,7 +4,6 @@ import React, { useRef, useEffect } from "react";
 import { useMusicPlayerContext } from "../contexts/MusicPlayerContext";
 
 const MusicPlayer = () => {
-  // const [isPlaying, setIsPlaying] = useState(false);
   const playerVolume = useRef();
   const PlayerSlider = useRef();
 
@@ -18,16 +17,8 @@ const MusicPlayer = () => {
     playPrevious,
     description,
     isPlaying,
+    playerImgSrc,
   } = useMusicPlayerContext();
-  // HELPERS
-  function setupTrackInfos() {
-    // if (curr_track != null) {
-    //     playerCover.value.src = curr_track.value.album_cover
-    //     playerSongName.value.innerHTML = "<u>Track Name:</u><br> " + curr_track.value.name
-    //     playerAlbum.value.innerHTML = "<u>Album Name:</u><br> " + curr_track.value.album_name
-    //     playerArtist.value.innerHTML = "<u>Artist Name:</u><br> " + curr_track.value.artists.map(artist => artist.name).join(', ')
-    // }
-  }
 
   // ACTUAL PLAYER MODIFIERS
   function next() {
@@ -64,13 +55,11 @@ const MusicPlayer = () => {
         )}
         <button onClick={next}>Next</button>
       </div>
-      <img src="/static/images/album_placeholder.jpeg" alt="album cover" />
+      <div className="player-img">
+        <img src={playerImgSrc} alt="album cover" />
+      </div>
       <div>
         <span>{description}</span>
-        {/* <br />
-        <span></span>
-        <br />
-        <span></span> */}
         <br />
         <input
           ref={PlayerSlider}
@@ -81,7 +70,7 @@ const MusicPlayer = () => {
           onInput={changeSlider}
         />
       </div>
-      <div>
+      <div className="volume">
         <span>Volume</span>
         <input
           ref={playerVolume}
