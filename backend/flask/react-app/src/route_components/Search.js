@@ -11,7 +11,7 @@ const Search = () => {
   const [artists, setArtists] = useState([]);
   const [name, setName] = useState({});
 
-  const url = `/api/v1/search?q=${query}`;
+  const url = `http://localhost:5000/api/v1/search?q=${query}`;
 
   const { data, loading, error } = useFetch(url);
 

@@ -36,7 +36,7 @@ export const MusicPlayerContext = ({ children }) => {
     clearInterval(updateInterval);
     resetSlider();
 
-    console.log(track);
+    console.log("inside load track", track);
 
     // get track info
     const newCurrTrack = new Audio();
@@ -49,14 +49,12 @@ export const MusicPlayerContext = ({ children }) => {
     setPlayerImgSrc(track.album.img_cover);
 
     // load track
-    try {
-      newCurrTrack.load();
-    } catch {
-      alert("This is a dummy file, please choose another one");
-    }
+    newCurrTrack.load();
 
     // Play track
     playTrack(newCurrTrack);
+
+    console.log("new curr track inside loading", newCurrTrack);
 
     // make next track play when current track ends
     newCurrTrack.addEventListener("ended", () => {
@@ -67,8 +65,13 @@ export const MusicPlayerContext = ({ children }) => {
   };
 
   const playTrack = (track) => {
-    track.play();
-    setIsPlaying(true);
+    track
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {
+        alert("Dummy file. Please elect another file.");
+        setIsPlaying(false);
+      });
   };
 
   const playCurrentTrack = () => {
@@ -76,7 +79,7 @@ export const MusicPlayerContext = ({ children }) => {
     if (currTrack != null) {
       playTrack(currTrack);
     } else {
-      alert("Please select a track first");
+      alert("Please select a track first.");
     }
   };
 
@@ -102,6 +105,7 @@ export const MusicPlayerContext = ({ children }) => {
 
   const loadTrackList = (tracks) => {
     setTrackList(tracks);
+    console.log(trackList);
   };
 
   const resetSlider = () => {
@@ -115,10 +119,12 @@ export const MusicPlayerContext = ({ children }) => {
   };
 
   const playNext = () => {
-    if (trackList == null) {
-      alert("Please select a track first");
+    if (currTrack == null) {
+      alert("Please select a track first.");
       return [];
     }
+    console.log(currTrack.getAttribute("id"));
+    console.log(trackList, "TRACK LIST");
     if (trackList[trackList.length - 1]["id"] == currTrack.id) {
       console.log("last track, go to first");
       loadTrack(trackList[0]);

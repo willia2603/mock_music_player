@@ -39,11 +39,8 @@ const store = createStore({
       state.curr_track.album_cover = track.album.img_cover;
 
       // load track
-      try {
-        state.curr_track.load();
-      } catch {
-        alert("This is a dummy file, please choose another one");
-      }
+
+      state.curr_track.load();
 
       // Set an interval of 1000 milliseconds
       // for updating the seek slider
@@ -73,11 +70,11 @@ const store = createStore({
           .play()
           .then(() => (state.isPlaying = true))
           .catch(() => {
-            alert("Dummy file. Select another one");
+            alert("Dummy file. Please elect another file.");
             state.isPlaying = false;
           });
       } else {
-        alert("Please select a track first");
+        alert("Please select a track first.");
       }
     },
     pauseTrack(state) {

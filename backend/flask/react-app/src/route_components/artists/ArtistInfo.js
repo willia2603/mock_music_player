@@ -11,7 +11,7 @@ const ArtistInfo = () => {
   const [artistName, setName] = useState("");
   const [artistImg, setImg] = useState("");
   const { id } = useParams();
-  const url = `/api/v1/artists/${id}`;
+  const url = `http://localhost:5000/api/v1/artists/${id}`;
   const { data, loading, error, empty } = useFetch(url);
 
   useEffect(() => {

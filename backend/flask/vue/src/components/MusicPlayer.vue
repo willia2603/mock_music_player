@@ -7,10 +7,7 @@ const store = useStore()
 // computed propriety to have it up to date and react accordingly
 const isPlaying = computed(() => store.getters.getIsPlaying)
 const curr_track = computed(() => store.getters.getCurrTrack)
-// const updateTimer = ref(null)
 
-
-// refs to access DOM els
 const playerCover = ref(null)
 const playerSongName= ref(null)
 const playerAlbum = ref(null)
@@ -32,7 +29,6 @@ function setupTrackInfos(){
         playerArtist.value.innerHTML = "<u>Artist Name:</u><br> " + curr_track.value.artists.map(artist => artist.name).join(', ')
     } 
 }
-
 
 // ACTUAL PLAYER MODIFIERS
 function play() {
@@ -76,6 +72,7 @@ console.log('rendering again')
         </div>
         <div>
             <span ref="playerSongName"> No song is playing</span>
+            <br>
             <span ref="playerAlbum"></span>
             <br>
             <span ref="playerArtist"></span>
