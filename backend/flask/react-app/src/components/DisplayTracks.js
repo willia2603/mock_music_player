@@ -2,11 +2,11 @@
 
 import "../css/DisplayTracks.css";
 import { NavLink } from "react-router-dom";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useMusicPlayerContext } from "../contexts/MusicPlayerContext";
 
 const DisplayTracks = ({ tracks, name }) => {
-  const loadTracks = useRef();
+  const [usedOver, setUsedOver] = useState(false);
 
   const { loadTrack, loadTrackList } = useMusicPlayerContext();
 
@@ -14,25 +14,18 @@ const DisplayTracks = ({ tracks, name }) => {
     loadTrack(track);
     console.log("track set");
   };
-
+  // to make mouseover fire only once
   const setTrackList = () => {
-    loadTrackList(tracks);
-    console.log("track list setted");
-  };
-
-  useEffect(() => {
-    // useEffect instead of onMouseOver to have event fire only once
-    if (loadTracks.current) {
-      loadTracks.current.addEventListener("mouseover", setTrackList, {
-        once: true,
-      });
+    if (!usedOver) {
+      loadTrackList(tracks);
+      setUsedOver(true);
     }
-  }, []);
+  };
 
   return (
     <>
       <h2>{name}</h2>
-      <div className="tracks" ref={loadTracks}>
+      <div className="tracks" onMouseOver={() => setTrackList()}>
         {tracks.map((track) => {
           return (
             <div className="track" key={track.id}>
