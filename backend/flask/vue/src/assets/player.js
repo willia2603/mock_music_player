@@ -29,7 +29,6 @@ let updateTimer;
 function set_track_list(list) {
   track_list = list;
   console.log("track list loaded");
-  // return track_list
 }
 
 /**

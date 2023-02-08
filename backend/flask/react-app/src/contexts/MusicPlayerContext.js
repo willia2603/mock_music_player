@@ -36,8 +36,6 @@ export const MusicPlayerContext = ({ children }) => {
     clearInterval(updateInterval);
     resetSlider();
 
-    console.log("inside load track", track);
-
     // get track info
     const newCurrTrack = new Audio();
     newCurrTrack.id = track.id;
@@ -53,8 +51,6 @@ export const MusicPlayerContext = ({ children }) => {
 
     // Play track
     playTrack(newCurrTrack);
-
-    console.log("new curr track inside loading", newCurrTrack);
 
     // make next track play when current track ends
     newCurrTrack.addEventListener("ended", () => {
@@ -105,7 +101,6 @@ export const MusicPlayerContext = ({ children }) => {
 
   const loadTrackList = (tracks) => {
     setTrackList(tracks);
-    console.log(trackList);
   };
 
   const resetSlider = () => {
@@ -123,8 +118,7 @@ export const MusicPlayerContext = ({ children }) => {
       alert("Please select a track first.");
       return [];
     }
-    console.log(currTrack.getAttribute("id"));
-    console.log(trackList, "TRACK LIST");
+
     if (trackList[trackList.length - 1]["id"] == currTrack.id) {
       console.log("last track, go to first");
       loadTrack(trackList[0]);

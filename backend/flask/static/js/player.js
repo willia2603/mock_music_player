@@ -30,7 +30,6 @@ let updateTimer;
 function set_track_list(list) {
   track_list = list;
   console.log("track list loaded");
-  // return track_list
 }
 
 /**
@@ -42,7 +41,6 @@ function loadTrack(track) {
     curr_track.pause();
   }
   curr_track = document.createElement("audio");
-  console.log("track loaded");
   clearInterval(updateTimer);
   restSlider();
 

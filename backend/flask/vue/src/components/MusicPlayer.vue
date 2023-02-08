@@ -56,7 +56,6 @@ function setSlider(){
     store.commit('setSlider')
 }
 initSlider()
-console.log('rendering again')
 </script>
 
 <template>
