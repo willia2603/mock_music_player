@@ -1,14 +1,7 @@
-// TODO: 1. add time left, 2. use real duration of track as duration (see stack overflow), 3. change img of cover when no song is playing 4. rifai con eyeD3?
 /**
 This file is used to setup the music player.
  */
 "use strict";
-// let BAH = document.querySelector(".tracks");
-// BAH.removeEventListener("onmouseover", set_track_list);
-// BAH.addEventListener("mouseover", set_track_list, {
-//   once: true,
-// });
-// console.log(BAH.onmouseover);
 
 let track_list;
 
@@ -51,7 +44,6 @@ function loadTrack(track) {
   curr_track = document.createElement("audio");
   console.log("track loaded");
   clearInterval(updateTimer);
-  // OK
   restSlider();
 
   curr_track.src = track.file;
@@ -166,7 +158,6 @@ function playPause() {
  */
 function playNext() {
   if (track_list[track_list.length - 1]["id"] == curr_track.id) {
-    // loadTrack(track_list[0])
     console.log("last track, go to first");
     loadTrack(track_list[0]);
   } else {
@@ -174,7 +165,6 @@ function playNext() {
     let curr_idx = track_list.findIndex((track) => track.id == curr_track.id);
     loadTrack(track_list[curr_idx + 1]);
   }
-  // playTrack();
 }
 
 /**
@@ -183,7 +173,6 @@ function playNext() {
  */
 function playPrevious() {
   if (track_list[0]["id"] == curr_track.id) {
-    // loadTrack(track_list[0])
     console.log("first track, got to last one");
     loadTrack(track_list[track_list.length - 1]);
   } else {
@@ -191,5 +180,4 @@ function playPrevious() {
     let curr_idx = track_list.findIndex((track) => track.id == curr_track.id);
     loadTrack(track_list[curr_idx - 1]);
   }
-  // playTrack();
 }

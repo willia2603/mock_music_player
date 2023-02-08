@@ -11,8 +11,6 @@ import MusicPlayer from './components/MusicPlayer.vue'
   <div class="page-layout">
     <Nav></Nav>
     <main>
-      <!-- * component gets loaded here -->
-      <!-- * :key to make route links with params rerender component as well -->
         <RouterView :key="$route.path"></RouterView>
     </main>
   </div>

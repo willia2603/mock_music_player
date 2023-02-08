@@ -76,8 +76,6 @@ const store = createStore({
             alert("Dummy file. Select another one");
             state.isPlaying = false;
           });
-
-        // state.curr_track.play();
       } else {
         alert("Please select a track first");
       }
@@ -94,7 +92,7 @@ const store = createStore({
     initSlider(state, slider) {
       state.playerSlider = slider;
     },
-    // setSlider
+
     setSlider(state) {
       // Calculate the seek position by the
       // percentage of the seek slider

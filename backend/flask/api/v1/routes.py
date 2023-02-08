@@ -8,7 +8,7 @@ import interfaces.artist as artist
 from flask import request
 
 '''
-This API is used to interact more easily with Vue and React. Else it would not be needed.
+This API used to interact more easily with Vue and React.
 '''
 
 api = Blueprint('api', __name__)

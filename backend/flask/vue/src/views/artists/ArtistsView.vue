@@ -1,7 +1,6 @@
 <script setup>
 import fetchData from '../../utils.js'
 import DisplayArtistAlbum from '../../components/DisplayArtistAlbum.vue';
-import axios from 'axios';
 import {ref} from 'vue'
 
 const artists = ref(null)

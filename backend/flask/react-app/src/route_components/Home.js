@@ -2,18 +2,6 @@ import DisplayArtistAlbum from "../components/DisplayArtistAlbum";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// TODO find out why container doesn't scroll
-
-// TODO create custom hook
-
-/* Feedback
- * Important!
- * Prefer using ES6 syntax (e.g. const func = () => {} instead of function() {})
- * Consider using custom hook for API calls (or something like react-query)
- * Less important
- * Add relevant style option to eslintrc (like deactivating proptypes) and prettier (like tab width)
- * Consider using react prop types or Typscript
- */
 const Home = () => {
   const [albums, setAlbums] = useState(null);
   const [name1, setName1] = useState("");
@@ -28,7 +16,6 @@ const Home = () => {
         const response = await axios.get("http://localhost:5000/api/v1/hp");
         setArtists(response.data.artists);
         setAlbums(response.data.albums);
-        // console.log(response.data.albums)
         setName1(response.data.name1);
         setName2(response.data.name2);
         setLoading(false);

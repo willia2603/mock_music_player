@@ -44,7 +44,6 @@ def goto_id(id: int):
             'album_name': album_name,
             'album_cover':album_cover,
             'tracks': [track.dict() for track in tracks]
-            # 'tracks': tracks
         }
         return render_template('albums_tracks.html', **context)
     except TemplateNotFound:

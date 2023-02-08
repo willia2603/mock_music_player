@@ -24,7 +24,7 @@ const props = defineProps({
     required: true
   }
 })
-// TODO: figure out why having const props and access id as prop.id works, and w/o not
+
 fetchData(`http://localhost:5000/api/v1/artists/${props.id}`, error)
 .then((data) => { 
     artist_img.value = data.artist_img

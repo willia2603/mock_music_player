@@ -20,7 +20,6 @@ const MusicPlayer = () => {
     playerImgSrc,
   } = useMusicPlayerContext();
 
-  // ACTUAL PLAYER MODIFIERS
   function next() {
     playNext();
   }

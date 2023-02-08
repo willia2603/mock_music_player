@@ -51,12 +51,6 @@ def get_common_albums(artist_ids : List[int], session: Session) -> List[AlbumSch
     :type session: Session
     :return: A list of AlbumSchemaFull objects
     """
-
-    # 
-    # aa1 = aliased(album_artist_association)
-    # aa2 = aliased(album_artist_association)
-    # res = session.query(aa1).join(aa2, aa1.columns.album_id == aa2.columns.album_id)
-    # print(res)
     aliases = []
     for el in artist_ids:
         aliases.append(aliased(album_artist_association))

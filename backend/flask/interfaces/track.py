@@ -19,7 +19,6 @@ def get_top_n(n : int, session : Session) -> List[TrackSchemaFull]:
     :type session: Session
     :return: A list of TrackSchemaFull objects
     """
-    # can't access res outside of session -> need to convert res to object -> use pydantic schemas
     res = session.query(Track).order_by(Track.popularity).slice(1,n+1)
     tracks = [TrackSchemaFull.from_orm(x) for x in res]
     return tracks
