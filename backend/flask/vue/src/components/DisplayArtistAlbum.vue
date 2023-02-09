@@ -11,7 +11,7 @@ const props = defineProps({
         required: true
     },
     class3: {
-        required: true
+        required: false
     },
     name: {
         required: true

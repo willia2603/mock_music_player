@@ -118,7 +118,7 @@ const store = createStore({
      * @param state - the state object
      */
     playNext(state) {
-      if (state.track_list == null) {
+      if (state.curr_track == null) {
         alert("Please select a track first");
         return [];
       }
@@ -141,6 +141,10 @@ const store = createStore({
      * @param state - the state object
      */
     playPrevious(state) {
+      if (state.curr_track == null) {
+        alert("Please select a track first");
+        return [];
+      }
       if (state.track_list[0]["id"] == state.curr_track.id) {
         this.commit("loadTrack", state.track_list[state.track_list.length - 1]);
       } else {
