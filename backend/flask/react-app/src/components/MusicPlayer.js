@@ -39,10 +39,6 @@ const MusicPlayer = () => {
     createSlider(PlayerSlider);
   }, []);
 
-  useEffect(() => {
-    console.log("isPlaying changed", isPlaying);
-  }, [isPlaying]);
-
   return (
     <div className="music-player">
       <div>

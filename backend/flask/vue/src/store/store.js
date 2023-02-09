@@ -126,10 +126,8 @@ const store = createStore({
         state.track_list[state.track_list.length - 1]["id"] ==
         state.curr_track.id
       ) {
-        console.log("last track, go to first");
         this.commit("loadTrack", state.track_list[0]);
       } else {
-        console.log("go to next track");
         let curr_idx = state.track_list.findIndex(
           (track) => track.id == state.curr_track.id
         );
@@ -144,10 +142,8 @@ const store = createStore({
      */
     playPrevious(state) {
       if (state.track_list[0]["id"] == state.curr_track.id) {
-        console.log("first track, got to last one");
         this.commit("loadTrack", state.track_list[state.track_list.length - 1]);
       } else {
-        console.log("go to previous track");
         let curr_idx = state.track_list.findIndex(
           (track) => track.id == state.curr_track.id
         );

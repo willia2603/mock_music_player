@@ -1,30 +1,25 @@
 import DisplayArtistAlbum from "../components/DisplayArtistAlbum";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import useFetch from "../hooks/useFetch";
 
 const Home = () => {
-  const [albums, setAlbums] = useState(null);
+  const [albums, setAlbums] = useState([]);
   const [name1, setName1] = useState("");
-  const [artists, setArtists] = useState(null);
+  const [artists, setArtists] = useState([]);
   const [name2, setName2] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
+  const url = "http://localhost:5000/api/v1/hp";
+
+  const { data, loading, error } = useFetch(url);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/v1/hp");
-        setArtists(response.data.artists);
-        setAlbums(response.data.albums);
-        setName1(response.data.name1);
-        setName2(response.data.name2);
-        setLoading(false);
-      } catch (e) {
-        setError(e.message);
-      }
-    };
-    fetchData();
-  }, []);
+    if (data) {
+      setArtists(data.artists);
+      setAlbums(data.albums);
+      setName1(data.name1);
+      setName2(data.name2);
+    }
+  }, [data]);
 
   if (error) {
     return <p>{error}</p>;

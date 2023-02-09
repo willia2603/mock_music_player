@@ -29,7 +29,6 @@ let updateTimer;
  */
 function set_track_list(list) {
   track_list = list;
-  console.log("track list loaded");
 }
 
 /**
@@ -142,10 +141,8 @@ function playTrack() {
  */
 function playPause() {
   if (isPlaying) {
-    console.log("pausing track");
     pauseTrack();
   } else {
-    console.log("playing track");
     playTrack();
   }
 }
@@ -156,10 +153,8 @@ function playPause() {
  */
 function playNext() {
   if (track_list[track_list.length - 1]["id"] == curr_track.id) {
-    console.log("last track, go to first");
     loadTrack(track_list[0]);
   } else {
-    console.log("go to next track");
     let curr_idx = track_list.findIndex((track) => track.id == curr_track.id);
     loadTrack(track_list[curr_idx + 1]);
   }
@@ -171,10 +166,8 @@ function playNext() {
  */
 function playPrevious() {
   if (track_list[0]["id"] == curr_track.id) {
-    console.log("first track, got to last one");
     loadTrack(track_list[track_list.length - 1]);
   } else {
-    console.log("go to previous track");
     let curr_idx = track_list.findIndex((track) => track.id == curr_track.id);
     loadTrack(track_list[curr_idx - 1]);
   }

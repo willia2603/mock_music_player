@@ -104,13 +104,11 @@ export const MusicPlayerContext = ({ children }) => {
   };
 
   const resetSlider = () => {
-    console.log("slider resetted");
     playerSlider.current.value = 0;
   };
 
   const createSlider = (slider) => {
     setPlayerSlider(slider);
-    console.log("slider created");
   };
 
   const playNext = () => {
@@ -120,10 +118,8 @@ export const MusicPlayerContext = ({ children }) => {
     }
 
     if (trackList[trackList.length - 1]["id"] == currTrack.id) {
-      console.log("last track, go to first");
       loadTrack(trackList[0]);
     } else {
-      console.log("go to next track");
       let curr_idx = trackList.findIndex((track) => track.id == currTrack.id);
       loadTrack(trackList[curr_idx + 1]);
     }
@@ -131,10 +127,8 @@ export const MusicPlayerContext = ({ children }) => {
 
   const playPrevious = () => {
     if (trackList[0]["id"] == currTrack.id) {
-      console.log("first track, got to last one");
       loadTrack(trackList[trackList.length - 1]);
     } else {
-      console.log("go to previous track");
       let curr_idx = trackList.findIndex((track) => track.id == currTrack.id);
       loadTrack(trackList[curr_idx - 1]);
     }

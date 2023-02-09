@@ -2,31 +2,23 @@ import React, { useState, useEffect } from "react";
 import DisplayTracks from "../../components/DisplayTracks";
 import DisplayNameImage from "../../components/DisplayNameImage";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import useFetch from "../../hooks/useFetch";
 
 const AlbumTracks = () => {
   const [tracks, setTracks] = useState([]);
   const [album, setAlbum] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/album_tracks/${id}`
-        );
+  const url = `http://localhost:5000/api/v1/album_tracks/${id}`;
 
-        setTracks(response.data.tracks);
-        setAlbum(response.data);
-        setLoading(false);
-      } catch (e) {
-        setError(e.message);
-      }
-    };
-    fetchData();
-  }, []);
+  const { data, loading, error } = useFetch(url);
+
+  useEffect(() => {
+    if (data) {
+      setTracks(data.tracks);
+      setAlbum(data);
+    }
+  }, [data]);
 
   if (error) {
     return <p>{error}</p>;

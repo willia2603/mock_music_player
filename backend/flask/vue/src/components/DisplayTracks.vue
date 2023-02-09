@@ -23,7 +23,6 @@ function loadTrack(track) {
 }
 function setTrackList() {
   store.commit('setTrackList', props.tracks)
-  console.log('track list setted')
 }
 
 </script>

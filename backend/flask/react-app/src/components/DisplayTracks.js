@@ -12,7 +12,6 @@ const DisplayTracks = ({ tracks, name }) => {
 
   const setTrack = (track) => {
     loadTrack(track);
-    console.log("track set");
   };
   // to make mouseover fire only once
   const setTrackList = () => {

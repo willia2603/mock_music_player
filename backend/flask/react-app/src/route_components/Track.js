@@ -1,27 +1,21 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import useFetch from "../hooks/useFetch";
 import DisplayTracks from "../components/DisplayTracks";
 
 const Track = () => {
-  const [tracks, setTracks] = useState(null);
-  const [name, setName] = useState("gghfhjgjh");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [tracks, setTracks] = useState([]);
+  const [name, setName] = useState("");
+  const url = "http://localhost:5000/api/v1/tracks";
+
+  const { data, loading, error } = useFetch(url);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/v1/tracks");
-        setTracks(response.data.tracks);
-        setName(response.data["title"]);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
+    if (data) {
+      setTracks(data.tracks);
+      setName(data["title"]);
+    }
+  }, [data]);
 
-    fetchData();
-  }, []);
   if (error) {
     return error;
   }
