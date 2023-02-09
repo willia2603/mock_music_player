@@ -25,7 +25,6 @@ class Artist(Base):
     tracks = relationship(
         "Track", secondary=track_artist_association, back_populates="artists")
 
-    # repr vs str: repr os a string but with more details about obj. str for costumer (simplified repr)
     def __repr__(self):
         return f"Artist(id={self.id!r}, name={self.name!r}, fullname={self.surname!r})"
 

@@ -9,7 +9,7 @@ artist_page = Blueprint('artists_page', __name__,
                         template_folder='./templates/artists')
                         
                         
-@artist_page.route('/artist')
+@artist_page.get('/artist')
 def artists():
     try:
         with Session(engine) as session:
@@ -23,7 +23,7 @@ def artists():
         print('error')
         abort(404)
 
-@artist_page.route('/artists/<int:id>/info')   
+@artist_page.get('/artists/<int:id>/info')   
 def goto_artist(id: int):
     try:
         with Session(engine) as session:
